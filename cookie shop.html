@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کوکی‌خانه | کوکی خانگی رژیمی و ساده</title>
+<meta name="description" content="کوکی خانگی رژیمی و ساده، پخته‌شده با عشق. بدون شکر افزوده، بدون مواد نگهدارنده.">
+<meta name="theme-color" content="#C97B3C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍪</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F0; --cream2:#FDF1E3; --brown:#3F2618; --brown2:#5C3A22;
+  --caramel:#C97B3C; --honey:#E8A33D; --sage:#7A9471; --pink:#E8A0A8;
+  --rose:#C25A62; --line:rgba(63,38,24,.10); --card:#fff;
+  --shadow:0 18px 50px -20px rgba(63,38,24,.35);
+  --radius:24px;
+}
+body.dark{
+  --cream:#181310; --cream2:#221913; --brown:#F5EBE0; --brown2:#E0D0BE;
+  --caramel:#E8A33D; --honey:#F0B85C; --line:rgba(245,235,224,.10);
+  --card:#221913; --shadow:0 18px 50px -20px rgba(0,0,0,.7);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--cream);color:var(--brown);overflow-x:hidden;line-height:1.9;transition:background .4s,color .4s}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:inherit}
+img{max-width:100%;display:block}
+
+.scroll-bar{position:fixed;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--caramel),var(--honey),var(--pink));z-index:999;width:0;transition:width .1s}
+.back-top{position:fixed;bottom:96px;right:26px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--brown);font-size:1.1rem;cursor:pointer;box-shadow:0 15px 35px -12px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.35s;z-index:140;display:grid;place-items:center}
+.back-top.show{opacity:1;pointer-events:auto}
+.back-top:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-4px)}
+
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:-1;pointer-events:none;transition:opacity .4s}
+.blob.b1{width:520px;height:520px;background:#FFD9A8;top:-180px;right:-160px}
+.blob.b2{width:460px;height:460px;background:#D8E8D0;bottom:-160px;left:-180px}
+.blob.b3{width:380px;height:380px;background:#FFD6DA;top:45%;left:35%;opacity:.28}
+body.dark .blob{opacity:.15}
+.wrap{width:min(1180px,92%);margin-inline:auto}
+
+.announce{background:linear-gradient(135deg,var(--brown),#2B1810);color:var(--cream);padding:8px 16px;font-size:.8rem;font-weight:500;position:relative;overflow:hidden;text-align:center}
+.announce .ticker-mini{display:inline-flex;gap:40px;animation:slide 30s linear infinite;white-space:nowrap}
+.announce .live-dot{display:inline-block;width:7px;height:7px;background:#7ED957;border-radius:50%;margin-left:6px;animation:pulse 1.6s infinite;vertical-align:middle}
+
+header{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(255,248,240,.82);border-bottom:1px solid transparent;transition:.35s}
+body.dark header{background:rgba(24,19,16,.82)}
+header.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px -20px rgba(63,38,24,.4)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:10px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.22rem;letter-spacing:-.5px;cursor:pointer;flex:none}
+.logo .dot{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#E8A33D,#B4661F 70%);display:grid;place-items:center;font-size:1rem;box-shadow:inset 0 -3px 8px rgba(0,0,0,.25),0 6px 16px -6px rgba(180,102,31,.7)}
+.menu{display:flex;gap:2px;align-items:center}
+.menu a{padding:8px 13px;border-radius:999px;font-size:.87rem;font-weight:500;color:var(--brown2);transition:.25s;white-space:nowrap}
+.menu a:hover{background:rgba(201,123,60,.12);color:var(--caramel)}
+
+.search-mini{position:relative;flex:1;max-width:220px}
+.search-mini input{width:100%;padding:9px 34px 9px 42px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--brown);font-size:.83rem;outline:none;transition:.25s}
+.search-mini input:focus{border-color:var(--caramel);box-shadow:0 0 0 4px rgba(201,123,60,.12)}
+.search-mini .ic{position:absolute;right:12px;top:50%;transform:translateY(-50%);opacity:.5;font-size:.85rem;pointer-events:none}
+.search-mini .mic{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;cursor:pointer;font-size:.9rem;opacity:.55;transition:.25s;padding:4px;border-radius:50%}
+.search-mini .mic:hover{opacity:1;background:rgba(201,123,60,.12)}
+.search-mini .mic.rec{color:var(--rose);opacity:1;animation:pulse 1s infinite}
+
+.hdr-actions{display:flex;gap:6px;align-items:center;flex:none}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;font-size:1rem;transition:.25s;color:var(--brown)}
+.icon-btn:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-2px)}
+.icon-btn b{position:absolute;top:-3px;left:-3px;background:var(--brown);color:var(--cream);font-size:.65rem;min-width:19px;height:19px;border-radius:999px;display:grid;place-items:center;font-weight:800;border:2px solid var(--cream);padding:0 3px}
+body.dark .icon-btn b{border-color:var(--card)}
+.icon-btn b[data-zero="1"]{display:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 22px;border-radius:999px;border:0;cursor:pointer;font-weight:700;font-size:.9rem;transition:.3s;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--caramel),var(--honey));color:#fff;box-shadow:0 14px 30px -12px rgba(201,123,60,.9)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -14px rgba(201,123,60,1)}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--brown)}
+.btn-ghost:hover{border-color:var(--caramel);color:var(--caramel);background:rgba(201,123,60,.06)}
+.burger{display:none;background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--brown);width:40px;height:40px}
+
+.hero{padding:55px 0 70px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(122,148,113,.15);color:#4F6B47;padding:7px 16px;border-radius:999px;font-size:.82rem;font-weight:700;border:1px solid rgba(122,148,113,.25)}
+body.dark .pill{color:#A8C39B}
+.pill span{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.3;letter-spacing:-1.5px;margin:18px 0 14px}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--caramel),var(--honey) 55%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.02rem;color:var(--brown2);opacity:.85;max-width:520px;font-weight:300}
+.hero-cta{display:flex;gap:11px;margin-top:28px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap}
+.hero-stats .s b{display:block;font-size:1.55rem;font-weight:900;color:var(--caramel)}
+.hero-stats .s span{font-size:.8rem;opacity:.65}
+
+.hero-art{position:relative;display:grid;place-items:center;min-height:390px}
+.plate{width:min(380px,88%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFDFA,#F3E3D0 65%,#E7D2B8);box-shadow:var(--shadow),inset 0 0 0 14px rgba(255,255,255,.6);display:grid;place-items:center;position:relative;animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.plate .big{font-size:clamp(6rem,15vw,9rem);filter:drop-shadow(0 22px 26px rgba(63,38,24,.35))}
+.chip{position:absolute;background:var(--card);border-radius:999px;padding:8px 14px;font-size:.78rem;font-weight:700;box-shadow:0 12px 28px -12px rgba(63,38,24,.45);display:flex;align-items:center;gap:6px;border:1px solid var(--line)}
+.chip.c1{top:12%;right:-4%;animation:floaty 5s ease-in-out infinite .4s}
+.chip.c2{bottom:16%;left:-6%;animation:floaty 5.5s ease-in-out infinite .9s}
+.chip.c3{bottom:4%;right:12%;animation:floaty 6.5s ease-in-out infinite .2s}
+
+.cotd{background:linear-gradient(135deg,var(--brown),#2B1810);color:var(--cream);border-radius:32px;padding:36px 40px;margin-top:30px;position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center}
+body.dark .cotd{background:var(--card);border:1px solid var(--line)}
+.cotd::before{content:'';position:absolute;inset:-50%;background:radial-gradient(circle at 30% 50%,rgba(232,163,61,.15),transparent 60%);pointer-events:none}
+.cotd .cotd-emoji{font-size:5rem;line-height:1;filter:drop-shadow(0 10px 20px rgba(0,0,0,.4));position:relative;z-index:1;animation:floaty 4s ease-in-out infinite}
+.cotd .cotd-info{position:relative;z-index:1}
+.cotd .cotd-tag{display:inline-block;background:rgba(232,163,61,.2);color:var(--honey);padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:1px;margin-bottom:8px}
+.cotd h3{font-size:1.4rem;font-weight:900;margin-bottom:4px}
+.cotd p{opacity:.75;font-size:.86rem;font-weight:300;max-width:420px}
+.cotd .cotd-timer{display:flex;gap:8px;position:relative;z-index:1}
+.cotd .cotd-timer div{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:12px;text-align:center;min-width:56px}
+.cotd .cotd-timer div b{display:block;font-size:1.3rem;font-weight:900;color:var(--honey);line-height:1}
+.cotd .cotd-timer div small{font-size:.65rem;opacity:.7}
+
+.ticker{background:var(--brown);color:var(--cream);padding:12px 0;overflow:hidden;white-space:nowrap;margin-top:20px}
+body.dark .ticker{background:var(--caramel);color:#181310}
+.ticker-track{display:inline-flex;gap:48px;animation:slide 26s linear infinite;font-weight:700;font-size:.88rem}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.ticker i{color:var(--honey);font-style:normal}
+body.dark .ticker i{color:#181310}
+
+section{padding:75px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 45px}
+.sec-head .kicker{color:var(--caramel);font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block}
+.sec-head h2{font-size:clamp(1.55rem,3.2vw,2.3rem);font-weight:900;letter-spacing:-1px;line-height:1.4}
+.sec-head p{opacity:.7;margin-top:12px;font-weight:300;font-size:.92rem}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;transition:.35s;position:relative;overflow:hidden}
+.feat:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+.feat .ic{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;font-size:1.4rem;margin-bottom:13px;background:linear-gradient(135deg,#FFF1DC,#FFE0B8)}
+.feat h3{font-size:1rem;margin-bottom:5px}
+.feat p{font-size:.85rem;opacity:.7;font-weight:300;line-height:1.75}
+
+.actions-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:48px}
+.action-card{border-radius:26px;padding:32px;position:relative;overflow:hidden;cursor:pointer;transition:.4s;display:flex;flex-direction:column;gap:12px;min-height:200px;color:#fff;justify-content:flex-end}
+.action-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -25px rgba(0,0,0,.4)}
+.action-card.a1{background:linear-gradient(135deg,#C97B3C,#8B4B1E)}
+.action-card.a2{background:linear-gradient(135deg,#7A9471,#3E5836)}
+.action-card::before{content:attr(data-emoji);position:absolute;top:-30px;left:-10px;font-size:10rem;opacity:.18;line-height:1}
+.action-card .ac-tag{background:rgba(255,255,255,.22);backdrop-filter:blur(8px);padding:5px 13px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:1px;align-self:flex-start;position:relative;z-index:1}
+.action-card h3{font-size:1.25rem;font-weight:900;position:relative;z-index:1}
+.action-card p{font-size:.85rem;opacity:.85;font-weight:300;position:relative;z-index:1}
+.action-card .ac-btn{background:rgba(255,255,255,.95);color:#3F2618;border:0;padding:9px 18px;border-radius:999px;font-weight:800;font-size:.8rem;align-self:flex-start;margin-top:6px;cursor:pointer;position:relative;z-index:1;transition:.25s}
+.action-card .ac-btn:hover{transform:scale(1.05)}
+
+.seasonal{background:linear-gradient(180deg,transparent,var(--cream2) 30%,var(--cream2) 70%,transparent)}
+.season-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.season{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;transition:.35s;position:relative;overflow:hidden}
+.season:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.season .s-emoji{font-size:3.5rem;line-height:1;margin-bottom:10px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15))}
+.season .s-badge{position:absolute;top:18px;left:18px;background:linear-gradient(135deg,var(--rose),#8A3844);color:#fff;padding:4px 12px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:1px}
+.season h4{font-size:1.05rem;font-weight:900;margin-bottom:6px}
+.season p{font-size:.82rem;opacity:.7;font-weight:300;margin-bottom:14px;line-height:1.75}
+.season .s-price{font-weight:900;color:var(--caramel);font-size:1.05rem}
+.season .s-add{margin-top:12px;width:100%;padding:11px;border-radius:12px;border:0;background:var(--brown);color:var(--cream);cursor:pointer;font-weight:700;font-size:.82rem;transition:.25s}
+body.dark .season .s-add{background:var(--caramel);color:#181310}
+.season .s-add:hover{background:var(--caramel);transform:scale(1.02)}
+
+.toolbar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:26px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;font-weight:600;font-size:.83rem;color:var(--brown2);transition:.28s}
+.filter:hover{border-color:var(--caramel);color:var(--caramel)}
+.filter.active{background:var(--brown);color:var(--cream);border-color:var(--brown)}
+body.dark .filter.active{background:var(--caramel);color:#181310;border-color:var(--caramel)}
+.sort-box select{padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--brown);font-size:.83rem;cursor:pointer;font-weight:600;outline:none}
+.sort-box select:focus{border-color:var(--caramel)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:.4s cubic-bezier(.2,.8,.3,1);display:flex;flex-direction:column;position:relative;animation:pop .5s backwards}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.97)}}
+.card:hover{transform:translateY(-10px);box-shadow:0 30px 60px -30px rgba(63,38,24,.6);border-color:transparent}
+.card .thumb{aspect-ratio:1/.86;display:grid;place-items:center;position:relative;font-size:4.8rem;cursor:pointer}
+.card .thumb::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.45) 1.5px,transparent 1.5px);background-size:16px 16px;opacity:.5}
+.badge{position:absolute;top:12px;right:12px;z-index:2;padding:5px 12px;border-radius:999px;font-size:.7rem;font-weight:800;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);color:#3F2618;box-shadow:0 6px 16px -8px rgba(0,0,0,.35)}
+.badge.diet{color:#4F6B47;background:rgba(230,242,224,.95)}
+.badge.simple{color:#A15A22;background:rgba(255,238,216,.95)}
+.badge.hot{color:#fff;background:linear-gradient(135deg,#E8593D,#C93D2A)}
+.badge.new{color:#fff;background:linear-gradient(135deg,#7A9471,#4F6B47)}
+.wish{position:absolute;top:12px;left:12px;z-index:2;width:32px;height:32px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:.95rem;transition:.25s;color:#C25A62}
+.wish:hover{transform:scale(1.12)}
+.wish.on{background:#C25A62;color:#fff}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1rem;margin-bottom:4px;cursor:pointer}
+.card h3:hover{color:var(--caramel)}
+.rating{display:flex;align-items:center;gap:5px;font-size:.78rem;margin-bottom:10px;color:var(--honey);font-weight:700;min-height:20px}
+.rating small{opacity:.6;color:var(--brown)}
+.rating.no-rate{color:var(--brown2);opacity:.55;font-weight:500}
+.card .desc{font-size:.82rem;opacity:.65;font-weight:300;line-height:1.7;flex:1;margin-bottom:12px}
+.meta{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.meta span{font-size:.68rem;padding:3px 9px;border-radius:999px;background:var(--cream2);color:var(--brown2)}
+.card .foot{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.price{font-weight:900;font-size:1.05rem;color:var(--caramel)}
+.price small{font-size:.68rem;font-weight:400;opacity:.6;color:var(--brown)}
+.add{border:0;cursor:pointer;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.78rem;background:var(--brown);color:var(--cream);transition:.3s}
+body.dark .add{background:var(--caramel);color:#181310}
+.add:hover{background:var(--caramel);transform:scale(1.05)}
+.add.done{background:var(--sage);color:#fff}
+
+.no-result{text-align:center;padding:55px 20px;opacity:.6;grid-column:1/-1}
+.no-result div{font-size:3rem;margin-bottom:10px}
+
+.recent-row{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:thin}
+.recent-row::-webkit-scrollbar{height:6px}
+.recent-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.recent-item{flex:none;width:170px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;transition:.3s;text-align:center}
+.recent-item:hover{border-color:var(--caramel);transform:translateY(-4px)}
+.recent-item .r-emoji{font-size:2.5rem;margin-bottom:6px;display:block}
+.recent-item .r-name{font-size:.8rem;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent-item .r-price{font-size:.75rem;color:var(--caramel);font-weight:800}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.gal-item{aspect-ratio:1;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;transition:.35s;display:grid;place-items:center;font-size:3.8rem}
+.gal-item:hover{transform:scale(1.03);box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.gal-item .overlay{position:absolute;bottom:0;right:0;left:0;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;padding:14px 12px 10px;font-size:.76rem;font-weight:700;transform:translateY(100%);transition:.35s}
+.gal-item:hover .overlay{transform:translateY(0)}
+
+.reviews-wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:flex-start}
+.reviews-list{display:grid;gap:14px;max-height:560px;overflow-y:auto;padding-left:6px}
+.reviews-list::-webkit-scrollbar{width:6px}
+.reviews-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.review{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.review .r-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.review .r-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;font-size:.85rem;flex:none}
+.review .r-meta b{display:block;font-size:.85rem}
+.review .r-meta small{font-size:.72rem;opacity:.6}
+.review .r-stars{color:var(--honey);font-size:.85rem;margin-bottom:6px;letter-spacing:1px}
+.review p{font-size:.85rem;opacity:.8;font-weight:300;line-height:1.9}
+.review .r-product{display:inline-block;background:var(--cream2);padding:3px 10px;border-radius:999px;font-size:.7rem;margin-top:8px;opacity:.8}
+.reviews-empty{text-align:center;padding:50px 20px;opacity:.6;background:var(--card);border:1px dashed var(--line);border-radius:18px}
+.reviews-empty div{font-size:3rem;margin-bottom:10px}
+
+.review-form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;position:sticky;top:100px}
+.review-form h4{font-size:.95rem;font-weight:800;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.review-form .rf-sub{font-size:.78rem;opacity:.65;margin-bottom:16px;line-height:1.7}
+.review-form .field{margin-bottom:12px}
+.review-form label{display:block;font-size:.78rem;font-weight:600;margin-bottom:5px;opacity:.8}
+.review-form input,.review-form textarea,.review-form select{width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--cream);color:var(--brown);font-size:.85rem;outline:none;transition:.25s}
+.review-form textarea{resize:vertical;min-height:70px}
+.review-form input:focus,.review-form textarea:focus,.review-form select:focus{border-color:var(--caramel);box-shadow:0 0 0 4px rgba(201,123,60,.1)}
+.star-picker{display:flex;gap:4px;flex-direction:row-reverse;justify-content:flex-end;margin-bottom:10px}
+.star-picker input{display:none}
+.star-picker label{font-size:1.6rem;color:#ddd;cursor:pointer;transition:.2s;line-height:1;font-weight:400;width:auto;padding:0}
+.star-picker input:checked ~ label,
+.star-picker label:hover,
+.star-picker label:hover ~ label{color:var(--honey)}
+.review-form button{width:100%;margin-top:6px}
+
+.why{background:linear-gradient(180deg,transparent,var(--cream2) 25%,var(--cream2) 75%,transparent)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-art{border-radius:28px;padding:36px;background:var(--card);box-shadow:var(--shadow);display:grid;gap:14px;border:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;font-size:.86rem}
+.bar .lbl{min-width:110px;font-weight:600}
+.bar .track{flex:1;height:9px;border-radius:999px;background:var(--cream2);overflow:hidden}
+.bar .fill{height:100%;border-radius:999px;width:0;transition:width 1.3s cubic-bezier(.2,.8,.3,1)}
+.why-list{display:grid;gap:16px;margin-top:22px}
+.why-item{display:flex;gap:14px;align-items:flex-start}
+.why-item .n{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--caramel),var(--honey));color:#fff;font-weight:900;font-size:.85rem;box-shadow:0 10px 22px -12px rgba(201,123,60,.95)}
+.why-item h4{font-size:.95rem;margin-bottom:3px}
+.why-item p{font-size:.84rem;opacity:.7;font-weight:300}
+
+.faq-list{max-width:780px;margin:0 auto;display:grid;gap:10px}
+.faq{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
+.faq.open{border-color:var(--caramel);box-shadow:0 15px 40px -22px rgba(201,123,60,.6)}
+.faq summary{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.92rem;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;user-select:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:1.3rem;font-weight:300;color:var(--caramel);transition:.3s;line-height:1}
+.faq.open summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 20px 18px;font-size:.86rem;opacity:.75;font-weight:300;line-height:1.95}
+
+.loyalty{background:linear-gradient(135deg,#FFE8C7,#F5CDA0);border-radius:28px;padding:40px 36px;display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;position:relative;overflow:hidden}
+body.dark .loyalty{background:linear-gradient(135deg,#3A2A1D,#2B1E14);border:1px solid var(--line)}
+.loyalty::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.4) 2px,transparent 2px);background-size:22px 22px;opacity:.3}
+.loyalty .l-emoji{font-size:4rem;position:relative;z-index:1;filter:drop-shadow(0 10px 16px rgba(0,0,0,.2))}
+.loyalty .l-info{position:relative;z-index:1}
+.loyalty h3{font-size:1.3rem;font-weight:900;margin-bottom:6px}
+.loyalty p{font-size:.88rem;opacity:.8;font-weight:300;max-width:520px;line-height:1.85}
+.loyalty .l-bar{margin-top:14px;background:rgba(0,0,0,.08);border-radius:999px;height:10px;overflow:hidden;max-width:340px}
+.loyalty .l-fill{height:100%;background:linear-gradient(90deg,var(--caramel),var(--rose));border-radius:999px;width:0;transition:width .8s}
+.loyalty .l-score{font-size:2.6rem;font-weight:900;color:var(--caramel);position:relative;z-index:1;text-align:center}
+.loyalty .l-score small{display:block;font-size:.75rem;font-weight:600;opacity:.65;color:var(--brown)}
+
+.order{background:var(--brown);color:var(--cream);border-radius:36px;padding:50px;position:relative;overflow:hidden}
+body.dark .order{background:var(--card);border:1px solid var(--line)}
+.order::before{content:'🍪';position:absolute;font-size:15rem;opacity:.05;top:-40px;left:-30px;transform:rotate(-18deg)}
+.order-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;position:relative;z-index:2}
+.order h2{font-size:clamp(1.5rem,3vw,2.15rem);font-weight:900;line-height:1.45;letter-spacing:-.8px}
+.order .sub{opacity:.7;font-weight:300;margin-top:12px;font-size:.9rem}
+.order .contact-list{margin-top:26px;display:grid;gap:11px}
+.order .contact-list a{display:flex;align-items:center;gap:11px;font-size:.88rem;opacity:.85;transition:.25s}
+.order .contact-list a:hover{opacity:1;transform:translateX(-6px);color:var(--honey)}
+.bale-num{font-size:1.3rem;font-weight:900;letter-spacing:2px;color:var(--honey);direction:ltr;display:inline-block}
+.ship-note{margin-top:14px;padding:12px 16px;background:rgba(255,255,255,.06);border-radius:14px;font-size:.82rem;line-height:1.8;border:1px solid rgba(255,255,255,.1)}
+
+form.order-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:26px;backdrop-filter:blur(10px)}
+body.dark form.order-form{background:rgba(255,255,255,.03);border-color:var(--line)}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:.78rem;margin-bottom:5px;opacity:.8;font-weight:500}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:var(--cream);font-size:.86rem;transition:.25s;outline:none}
+body.dark .field input,body.dark .field select,body.dark .field textarea{color:var(--brown);border-color:var(--line);background:rgba(255,255,255,.04)}
+.field textarea{resize:vertical;min-height:66px}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,248,240,.4)}
+body.dark .field input::placeholder,body.dark .field textarea::placeholder{color:rgba(245,235,224,.35)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--honey);background:rgba(255,255,255,.12);box-shadow:0 0 0 4px rgba(232,163,61,.15)}
+.field select option{background:#3F2618;color:#FFF8F0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.check-row{display:flex;align-items:center;gap:9px;font-size:.84rem;padding:11px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:.25s;margin-bottom:13px}
+.check-row:hover{border-color:var(--honey)}
+.check-row input{width:auto;accent-color:var(--honey);cursor:pointer;flex:none;margin:0}
+.gift-msg-wrap{max-height:0;overflow:hidden;transition:max-height .4s;margin-bottom:0}
+.gift-msg-wrap.open{max-height:200px;margin-bottom:13px}
+.summary-box{background:rgba(0,0,0,.18);border-radius:14px;padding:14px 16px;margin-bottom:14px;font-size:.83rem;display:grid;gap:6px}
+.summary-box .row{display:flex;justify-content:space-between;opacity:.85}
+.summary-box .row.total{border-top:1px dashed rgba(255,255,255,.2);padding-top:9px;margin-top:3px;font-weight:900;font-size:1.02rem;opacity:1;color:var(--honey)}
+form.order-form .btn-primary{width:100%;margin-top:5px;padding:13px}
+.note{font-size:.72rem;opacity:.55;text-align:center;margin-top:9px;line-height:1.7}
+.form-msg{margin-top:11px;padding:10px 14px;border-radius:12px;font-size:.82rem;display:none;line-height:1.75}
+.form-msg.ok{display:block;background:rgba(122,148,113,.22);border:1px solid rgba(122,148,113,.4);color:#D5E8CC}
+.form-msg.err{display:block;background:rgba(232,160,168,.2);border:1px solid rgba(232,160,168,.4);color:#F5D0D5}
+
+.track-box{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;max-width:640px;margin:0 auto}
+.track-box h3{font-size:1.05rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.track-box p{font-size:.83rem;opacity:.7;margin-bottom:14px;font-weight:300}
+.track-row{display:flex;gap:9px;margin-bottom:14px}
+.track-row input{flex:1;padding:12px 15px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);color:var(--brown);font-size:.88rem;outline:none;transition:.25s}
+.track-row input:focus{border-color:var(--caramel);box-shadow:0 0 0 4px rgba(201,123,60,.12)}
+.track-results{display:grid;gap:11px}
+.track-item{background:var(--cream2);border-radius:14px;padding:14px 16px;border-right:4px solid var(--caramel)}
+.track-item .head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.track-item .head b{font-size:.9rem}
+.track-item .head span{font-size:.72rem;background:var(--sage);color:#fff;padding:3px 10px;border-radius:999px;font-weight:700}
+.track-item .info{font-size:.8rem;opacity:.75;display:grid;gap:4px;font-weight:300}
+.track-empty{text-align:center;padding:18px;opacity:.5;font-size:.83rem}
+
+.newsletter{background:linear-gradient(135deg,var(--cream2),#F5DFC0);border-radius:26px;padding:40px 32px;text-align:center;border:1px solid var(--line);position:relative;overflow:hidden}
+body.dark .newsletter{background:linear-gradient(135deg,var(--cream2),#2A1F17)}
+.newsletter::before{content:'💌';position:absolute;font-size:10rem;opacity:.06;top:-30px;left:-20px;transform:rotate(-15deg)}
+.newsletter h3{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:900;margin-bottom:9px;position:relative;z-index:1}
+.newsletter p{opacity:.75;font-size:.88rem;font-weight:300;margin-bottom:20px;max-width:480px;margin-inline:auto;position:relative;z-index:1}
+.newsletter form{background:transparent;border:0;padding:0;backdrop-filter:none;max-width:500px;margin-inline:auto;display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:1}
+.newsletter input{flex:1;min-width:190px;padding:13px 17px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--brown);font-size:.86rem;outline:none;transition:.25s}
+.newsletter input:focus{border-color:var(--caramel)}
+.newsletter button{padding:13px 24px}
+
+footer{padding:50px 0 28px;text-align:center}
+.foot-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.foot-links a{font-size:.86rem;opacity:.7;transition:.25s}
+.foot-links a:hover{opacity:1;color:var(--caramel)}
+.social{display:flex;gap:9px;justify-content:center;margin:18px 0}
+.social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:.95rem;transition:.25s;background:var(--card)}
+.social a:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-3px)}
+.copy{font-size:.76rem;opacity:.5;border-top:1px solid var(--line);padding-top:20px;margin-top:12px;line-height:1.9}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,140%);background:var(--brown);color:var(--cream);padding:12px 22px;border-radius:999px;font-size:.84rem;font-weight:600;box-shadow:0 20px 50px -18px rgba(0,0,0,.7);z-index:400;transition:.45s cubic-bezier(.2,.9,.3,1.3);display:flex;align-items:center;gap:9px;max-width:90%}
+body.dark .toast{background:var(--caramel);color:#181310}
+.toast.show{transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.drawer-overlay{position:fixed;inset:0;background:rgba(30,18,10,.55);backdrop-filter:blur(4px);z-index:250;opacity:0;pointer-events:none;transition:.4s}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(420px,92%);background:var(--cream);z-index:260;transform:translateX(-100%);transition:.45s cubic-bezier(.2,.9,.3,1.1);display:flex;flex-direction:column;box-shadow:20px 0 60px -20px rgba(0,0,0,.5)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{font-size:1.05rem;font-weight:900;display:flex;align-items:center;gap:8px}
+.drawer-head button{background:transparent;border:0;font-size:1.3rem;cursor:pointer;color:var(--brown);width:32px;height:32px;border-radius:50%;transition:.25s}
+.drawer-head button:hover{background:var(--cream2);transform:rotate(90deg)}
+.drawer-body{flex:1;overflow-y:auto;padding:14px 18px}
+.cart-item{display:flex;gap:11px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:15px;margin-bottom:9px;align-items:center;animation:pop .3s}
+.cart-item .ci-emoji{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.6rem;flex:none;background:var(--cream2)}
+.cart-item .ci-info{flex:1;min-width:0}
+.cart-item .ci-info b{display:block;font-size:.85rem;margin-bottom:3px}
+.cart-item .ci-info span{font-size:.75rem;color:var(--caramel);font-weight:800}
+.qty-ctrl{display:flex;align-items:center;gap:5px;background:var(--cream2);border-radius:999px;padding:3px}
+.qty-ctrl button{width:24px;height:24px;border-radius:50%;border:0;background:var(--card);cursor:pointer;font-weight:900;color:var(--brown);font-size:.85rem;transition:.2s;display:grid;place-items:center}
+.qty-ctrl button:hover{background:var(--caramel);color:#fff}
+.qty-ctrl span{font-weight:800;min-width:18px;text-align:center;font-size:.82rem}
+.ci-remove{background:transparent;border:0;color:#C25A62;cursor:pointer;font-size:.95rem;padding:4px}
+.ci-remove:hover{transform:scale(1.2)}
+.empty-cart{text-align:center;padding:50px 20px;opacity:.55}
+.empty-cart div{font-size:3rem;margin-bottom:10px}
+.drawer-foot{padding:18px 22px;border-top:1px solid var(--line);background:var(--card)}
+.drawer-foot .row{display:flex;justify-content:space-between;font-size:.83rem;margin-bottom:5px;opacity:.75}
+.drawer-foot .row.total{font-size:1.1rem;font-weight:900;color:var(--caramel);opacity:1;padding-top:9px;border-top:1px dashed var(--line);margin-top:7px;margin-bottom:12px}
+.drawer-foot .btn{width:100%}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(30,18,10,.72);backdrop-filter:blur(6px);z-index:300;display:none;padding:18px;overflow-y:auto;align-items:flex-start;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--cream);border-radius:24px;max-width:780px;width:100%;padding:0;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:pop .4s;margin:auto;position:relative}
+.modal .close-m{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);border:0;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;z-index:5;color:#3F2618;transition:.25s}
+.modal .close-m:hover{background:#fff;transform:rotate(90deg)}
+
+.product-modal .modal-grid{display:grid;grid-template-columns:1fr 1.15fr}
+.product-modal .m-visual{display:grid;place-items:center;font-size:7.5rem;min-height:280px;position:relative}
+.product-modal .m-visual::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.45) 2px,transparent 2px);background-size:20px 20px;opacity:.5}
+.product-modal .m-body{padding:26px 24px}
+.product-modal .m-body h3{font-size:1.3rem;font-weight:900;margin-bottom:6px}
+.product-modal .m-desc{font-size:.88rem;opacity:.75;font-weight:300;line-height:1.85;margin-bottom:16px}
+.nutri{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.nutri div{background:var(--cream2);padding:9px 13px;border-radius:11px;font-size:.78rem;display:flex;justify-content:space-between}
+.nutri div b{color:var(--caramel);font-weight:800}
+.allergen{font-size:.76rem;background:rgba(232,160,168,.15);color:#8A3844;padding:8px 13px;border-radius:11px;margin-bottom:14px;line-height:1.75}
+body.dark .allergen{color:#F2BCC1}
+.product-modal .m-foot{display:flex;justify-content:space-between;align-items:center;gap:11px;padding-top:14px;border-top:1px dashed var(--line);flex-wrap:wrap}
+
+.quiz-modal,.builder-modal{max-width:640px}
+.qb-head{padding:24px 26px 18px;border-bottom:1px solid var(--line)}
+.qb-head h3{font-size:1.2rem;font-weight:900;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+.qb-head p{font-size:.84rem;opacity:.7;font-weight:300}
+.qb-progress{height:6px;background:var(--cream2);border-radius:999px;overflow:hidden;margin-top:14px}
+.qb-progress div{height:100%;background:linear-gradient(90deg,var(--caramel),var(--honey));width:0;transition:width .4s;border-radius:999px}
+.qb-body{padding:22px 26px;min-height:280px}
+.qb-step{display:none}
+.qb-step.active{display:block;animation:pop .35s}
+.qb-step h4{font-size:1rem;font-weight:800;margin-bottom:16px;line-height:1.6}
+.qb-options{display:grid;gap:10px}
+.qb-opt{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 18px;cursor:pointer;transition:.25s;display:flex;align-items:center;gap:13px;font-size:.88rem;font-weight:600;text-align:right;color:var(--brown);width:100%}
+.qb-opt:hover{border-color:var(--caramel);transform:translateX(-4px);background:rgba(201,123,60,.05)}
+.qb-opt .emo{font-size:1.6rem;flex:none}
+.qb-opt.selected{border-color:var(--caramel);background:rgba(201,123,60,.1);box-shadow:0 0 0 3px rgba(201,123,60,.15)}
+.qb-foot{padding:16px 26px 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.qb-foot .step-count{font-size:.78rem;opacity:.6;font-weight:600}
+.qb-result{text-align:center;padding:20px}
+.qb-result .res-emoji{font-size:6rem;line-height:1;margin-bottom:14px;filter:drop-shadow(0 15px 25px rgba(0,0,0,.25));animation:floaty 4s ease-in-out infinite}
+.qb-result h3{font-size:1.4rem;font-weight:900;margin-bottom:8px}
+.qb-result p{font-size:.88rem;opacity:.75;font-weight:300;max-width:420px;margin:0 auto 18px}
+.qb-result .res-tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.qb-result .res-tags span{background:var(--cream2);padding:4px 12px;border-radius:999px;font-size:.74rem;font-weight:700}
+.qb-result .res-price{font-size:1.5rem;font-weight:900;color:var(--caramel);margin-bottom:16px}
+.qb-result .res-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+
+.builder-preview{background:linear-gradient(135deg,#FFF3DC,#F0D9AE);border-radius:18px;padding:22px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.builder-preview::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.45) 2px,transparent 2px);background-size:20px 20px;opacity:.5}
+.builder-preview .bp-emoji{font-size:5rem;line-height:1;position:relative;z-index:1;filter:drop-shadow(0 12px 20px rgba(0,0,0,.2))}
+.builder-preview .bp-label{font-size:.78rem;font-weight:700;opacity:.7;position:relative;z-index:1;margin-top:8px}
+.builder-summary{background:var(--cream2);border-radius:14px;padding:14px 16px;font-size:.83rem;display:grid;gap:6px;margin-bottom:14px}
+.builder-summary .row{display:flex;justify-content:space-between}
+.builder-summary .row.total{font-weight:900;color:var(--caramel);font-size:1.05rem;border-top:1px dashed var(--line);padding-top:8px;margin-top:4px}
+
+.chat-fab{position:fixed;bottom:26px;left:26px;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,#7A9471,#4F6B47);color:#fff;font-size:1.4rem;box-shadow:0 18px 40px -14px rgba(122,148,113,1);transition:.3s;z-index:150;display:grid;place-items:center}
+.chat-fab:hover{transform:scale(1.1)}
+.chat-box{position:fixed;bottom:96px;left:26px;width:min(340px,90vw);background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);z-index:160;display:flex;flex-direction:column;max-height:480px;transform:translateY(20px) scale(.9);opacity:0;pointer-events:none;transition:.35s;overflow:hidden}
+.chat-box.open{transform:none;opacity:1;pointer-events:auto}
+.chat-head{background:linear-gradient(135deg,var(--sage),#4F6B47);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.chat-head b{font-size:.9rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.chat-head button{background:transparent;border:0;color:#fff;font-size:1rem;cursor:pointer}
+.chat-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.83rem}
+.chat-msg{max-width:80%;padding:9px 13px;border-radius:14px;line-height:1.75;animation:pop .3s}
+.chat-msg.bot{background:var(--cream2);align-self:flex-start;border-bottom-right-radius:4px}
+.chat-msg.user{background:var(--caramel);color:#fff;align-self:flex-end;border-bottom-left-radius:4px}
+.chat-quick{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px}
+.chat-quick button{background:var(--cream2);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:.72rem;cursor:pointer;font-weight:700;color:var(--brown2);transition:.25s}
+.chat-quick button:hover{border-color:var(--caramel);color:var(--caramel)}
+.chat-input{display:flex;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:var(--cream)}
+.chat-input input{flex:1;padding:9px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--brown);font-size:.82rem;outline:none}
+.chat-input input:focus{border-color:var(--caramel)}
+.chat-input button{background:var(--brown);color:var(--cream);border:0;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:.9rem}
+body.dark .chat-input button{background:var(--caramel);color:#181310}
+
+.admin-overlay{position:fixed;inset:0;background:rgba(30,18,10,.78);backdrop-filter:blur(8px);z-index:500;display:none;padding:18px;overflow-y:auto}
+.admin-overlay.open{display:block}
+.admin-panel{background:var(--cream);border-radius:24px;max-width:1100px;margin:0 auto;padding:24px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:pop .4s}
+.admin-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.admin-head h2{font-size:1.2rem;font-weight:900;display:flex;align-items:center;gap:9px}
+.admin-head .close{background:var(--brown);color:#fff;border:0;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.95rem;transition:.25s}
+body.dark .admin-head .close{background:var(--caramel);color:#181310}
+.admin-head .close:hover{background:var(--caramel);transform:rotate(90deg)}
+.admin-actions{display:flex;gap:6px;flex-wrap:wrap}
+.admin-actions button{padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:.75rem;font-weight:700;color:var(--brown2);transition:.25s}
+.admin-actions button:hover{border-color:var(--caramel);color:var(--caramel)}
+.admin-actions .danger:hover{border-color:#C25A62;color:#C25A62}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin-bottom:20px}
+.stat-box{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:14px}
+.stat-box .k{font-size:.72rem;opacity:.6;font-weight:600;margin-bottom:4px}
+.stat-box .v{font-size:1.3rem;font-weight:900;color:var(--caramel);line-height:1.2}
+.stat-box .v small{font-size:.72rem;font-weight:500;color:var(--brown);opacity:.6}
+.admin-section{margin-bottom:20px}
+.admin-section h3{font-size:.92rem;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.admin-section h3::before{content:'';width:5px;height:16px;border-radius:3px;background:linear-gradient(var(--caramel),var(--honey))}
+.breakdown{display:grid;gap:7px}
+.bd-row{display:flex;align-items:center;gap:9px;font-size:.8rem}
+.bd-row .name{min-width:130px;font-weight:600}
+.bd-row .track{flex:1;height:19px;background:var(--card);border-radius:999px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.bd-row .fill{height:100%;background:linear-gradient(90deg,var(--caramel),var(--honey));border-radius:999px;transition:width .8s cubic-bezier(.2,.8,.3,1);display:flex;align-items:center;justify-content:flex-end;padding-left:8px;color:#fff;font-size:.68rem;font-weight:800}
+.bd-row .num{min-width:50px;text-align:left;font-weight:800;color:var(--caramel)}
+.orders-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:13px;overflow:hidden;border:1px solid var(--line);font-size:.78rem}
+.orders-table th{background:var(--cream2);padding:9px 8px;text-align:right;font-weight:800;font-size:.72rem;color:var(--brown2);white-space:nowrap}
+.orders-table td{padding:9px 8px;border-top:1px solid var(--line);vertical-align:middle}
+.orders-table tr:hover td{background:rgba(201,123,60,.05)}
+.orders-table .del-btn{background:var(--card);border:1px solid var(--line);color:#C25A62;border-radius:7px;padding:4px 8px;cursor:pointer;font-size:.68rem;font-weight:700;transition:.2s}
+.orders-table .del-btn:hover{background:#C25A62;color:#fff;border-color:#C25A62}
+.tag-date{display:inline-block;background:rgba(232,163,61,.15);color:#A15A22;padding:2px 8px;border-radius:999px;font-size:.68rem;font-weight:700;white-space:nowrap}
+body.dark .tag-date{color:var(--honey)}
+.tag-qty{display:inline-block;background:rgba(122,148,113,.18);color:#4F6B47;padding:2px 8px;border-radius:999px;font-size:.68rem;font-weight:800}
+body.dark .tag-qty{color:#A8C39B}
+.empty{text-align:center;padding:32px;opacity:.5;font-size:.85rem}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:600;display:none}
+
+@media(max-width:1050px){
+  .search-mini{display:none}
+  .menu{position:fixed;inset:70px 0 auto 0;background:var(--cream);flex-direction:column;padding:18px;gap:3px;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(63,38,24,.5);transform:translateY(-140%);transition:.4s cubic-bezier(.2,.9,.3,1.2);z-index:99}
+  .menu.open{transform:translateY(0)}
+  .menu a{width:100%;text-align:center;padding:12px;font-size:.88rem}
+  .menu .mobile-search{display:block !important;width:100%;padding-top:8px}
+  .menu .mobile-search input{width:100%}
+  .burger{display:grid}
+}
+@media(max-width:900px){
+  .hero-grid,.why-grid,.order-grid,.product-modal .modal-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;min-height:280px}
+  .why-grid{gap:34px}
+  .order{padding:34px 20px;border-radius:26px}
+  section{padding:55px 0}
+  .hero{padding:34px 0 50px}
+  .product-modal .m-visual{min-height:220px;font-size:5.5rem}
+  .admin-panel{padding:16px}
+  .orders-table{font-size:.72rem}
+  .orders-table th,.orders-table td{padding:7px 5px}
+  .actions-2{grid-template-columns:1fr}
+  .cotd{grid-template-columns:auto 1fr;padding:26px}
+  .cotd .cotd-timer{grid-column:1/-1;justify-content:flex-end}
+  .loyalty{grid-template-columns:auto 1fr;padding:28px}
+  .loyalty .l-score{grid-column:1/-1;text-align:right}
+  .reviews-wrap{grid-template-columns:1fr}
+  .review-form{position:static}
+}
+@media(max-width:520px){
+  .row2{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+  .chip.c1{right:0}.chip.c2{left:0}
+  .bd-row .name{min-width:95px;font-size:.73rem}
+  .drawer{width:100%}
+  .hdr-actions .icon-btn{width:36px;height:36px;font-size:.9rem}
+  .cotd{grid-template-columns:1fr;text-align:center;padding:22px 18px}
+  .cotd .cotd-emoji{font-size:4rem;justify-self:center}
+  .cotd .cotd-timer{justify-content:center}
+  .loyalty{grid-template-columns:1fr;text-align:center;padding:24px 18px}
+  .loyalty .l-emoji{justify-self:center}
+  .loyalty .l-bar{margin-inline:auto}
+  .loyalty .l-score{text-align:center}
+  .chat-box{left:14px;right:14px;width:auto}
+  .chat-fab{left:14px;bottom:20px}
+  .back-top{right:14px;bottom:84px}
+}
+.mobile-search{display:none;padding:6px 0}
+.mobile-search input{width:100%;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--brown);outline:none;font-size:.86rem}
+</style>
+</head>
+<body>
+
+<div class="scroll-bar" id="scrollBar"></div>
+<button class="back-top" id="backTop" title="بازگشت به بالا">↑</button>
+<canvas id="confetti"></canvas>
+
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<div class="announce">
+  <span class="live-dot"></span>
+  <span class="ticker-mini">
+    <span>🍪 پخت تازه هر روز صبح</span>
+    <span>🚚 ارسال سریع فقط به تهران و کرج</span>
+    <span>🌸 کلکسیون بهاره اومده</span>
+    <span>🎨 کوکی‌ساز: کوکی خودت رو طراحی کن</span>
+  </span>
+</div>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo" id="logoBtn"><span class="dot">🍪</span> کوکی‌خانه</a>
+
+    <nav class="menu" id="menu">
+      <a href="#products">منو</a>
+      <a href="#seasonal">فصلی</a>
+      <a href="#why">چرا ما؟</a>
+      <a href="#reviews-real">نظرات</a>
+      <a href="#faq">سوالات</a>
+      <a href="#track">پیگیری</a>
+      <a href="#order">سفارش</a>
+      <div class="mobile-search">
+        <input type="search" id="mobileSearch" placeholder="🔍 جستجو در کوکی‌ها...">
+      </div>
+    </nav>
+
+    <div class="search-mini">
+      <input type="search" id="searchInput" placeholder="جستجو...">
+      <span class="ic">🔍</span>
+      <button class="mic" id="micBtn" title="جستجوی صوتی">🎤</button>
+    </div>
+
+    <div class="hdr-actions">
+      <button class="icon-btn" id="themeBtn" title="حالت شب/روز">🌙</button>
+      <button class="icon-btn" id="wishBtn" title="علاقه‌مندی‌ها">❤️<b id="wishCount" data-zero="1">0</b></button>
+      <button class="icon-btn" id="cartBtn" title="سبد خرید">🛒<b id="cartCount" data-zero="1">0</b></button>
+      <button class="burger" id="burger" aria-label="منو">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span></span> پخت تازه، هر روز صبح</span>
+      <h1>کوکی خانگی، <em>رژیمی و ساده</em>، با طعم واقعی</h1>
+      <p class="lead">بدون شکر افزوده، بدون روغن هیدروژنه، بدون مواد نگهدارنده. فقط مواد اولیه‌ی خوب، دست‌های ماهر و فرّ گرم.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">دیدن منو 🍪</a>
+        <button class="btn btn-ghost" id="heroQuizBtn">🧙 کوکی مناسب من چیه؟</button>
+      </div>
+      <div class="hero-stats">
+        <div class="s"><b id="statOrders">۰</b><span>سفارش ثبت‌شده</span></div>
+        <div class="s"><b id="statReviews">۰</b><span>نظر مشتریان</span></div>
+        <div class="s"><b id="statRating">—</b><span>میانگین امتیاز</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="plate"><div class="big">🍪</div></div>
+      <div class="chip c1">🌿 بدون شکر افزوده</div>
+      <div class="chip c2">🔥 تازه از فر</div>
+      <div class="chip c3">🚚 تهران و کرج</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cotd reveal" id="cotd"></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <span>🍪 کوکی جو و عسل</span><i>•</i>
+    <span>🌿 بدون شکر افزوده</span><i>•</i>
+    <span>🍫 شکلات تلخ ۷۰٪</span><i>•</i>
+    <span>🥥 نارگیل و بادام</span><i>•</i>
+    <span>🚚 ارسال فقط تهران و کرج</span><i>•</i>
+    <span>🏠 پخت کاملاً خانگی</span><i>•</i>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">چرا کوکی‌خانه</span>
+      <h2>چیزی که می‌خوری، همون چیزیه که ما می‌خوریم</h2>
+      <p>هر کوکی با استاندارد خونه‌ی خودمون پخته می‌شه؛ نه کارخونه، نه انبار.</p>
+    </div>
+    <div class="features">
+      <div class="feat reveal"><div class="ic">🌿</div><h3>شیرین‌کننده‌ی طبیعی</h3><p>خرما، عسل و شیره‌ی افرا جای شکر تصفیه‌شده رو گرفتن.</p></div>
+      <div class="feat reveal"><div class="ic">🌾</div><h3>آرد کامل و جو</h3><p>فیبر بالا، سیرکننده‌ی بیشتر، مناسب رژیم‌های کم‌کالری.</p></div>
+      <div class="feat reveal"><div class="ic">🧈</div><h3>چربی‌های سالم</h3><p>کره‌ی حیوانی طبیعی، روغن نارگیل و مغزها. صفر روغن ترانس.</p></div>
+      <div class="feat reveal"><div class="ic">📦</div><h3>بسته‌بندی محافظ</h3><p>جعبه‌ی مقاوم و مهر‌و‌موم‌شده تا درِ خونه سالم و ترد بمونن.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">منوی امروز</span>
+      <h2>یه کوکی برای هر حال‌وهوا</h2>
+      <p>فیلتر کن، جستجو کن، یا با کوکی‌ساز خودت کوکی دلخواهت رو بساز.</p>
+    </div>
+
+    <div class="actions-2 reveal">
+      <div class="action-card a1" data-emoji="🧙" id="quizCard">
+        <span class="ac-tag">۴ سوال کوتاه</span>
+        <h3>کدوم کوکی مناسب منه؟</h3>
+        <p>با چند سوال ساده، کوکی‌ای که دقیقاً با سلیقه و نیازت جور در میاد رو پیدا کن.</p>
+        <button class="ac-btn">شروع کوئیز →</button>
+      </div>
+
+      <div class="action-card a2" data-emoji="🎨" id="builderCard">
+        <span class="ac-tag">خلاقیت آزاد</span>
+        <h3>کوکی‌ساز — کوکی خودت رو بساز</h3>
+        <p>خمیر، مغز و روکش رو خودت انتخاب کن. یه کوکی کاملاً منحصربه‌فرد برای خودت.</p>
+        <button class="ac-btn">شروع ساخت →</button>
+      </div>
+    </div>
+
+    <div class="toolbar reveal">
+      <div class="filters">
+        <button class="filter active" data-filter="all">همه</button>
+        <button class="filter" data-filter="diet">🌿 رژیمی</button>
+        <button class="filter" data-filter="simple">🍪 ساده</button>
+        <button class="filter" data-filter="hot">🔥 پرفروش</button>
+        <button class="filter" data-filter="wish">❤️ علاقه‌مندی</button>
+      </div>
+      <div class="sort-box">
+        <select id="sortSelect">
+          <option value="default">مرتب‌سازی: پیش‌فرض</option>
+          <option value="price-asc">ارزان‌ترین</option>
+          <option value="price-desc">گران‌ترین</option>
+          <option value="rating">بیشترین امتیاز</option>
+          <option value="popular">محبوب‌ترین</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="recent" style="padding-top:30px;display:none">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <h3 style="font-size:1.1rem;font-weight:900;display:flex;align-items:center;gap:9px">👀 اخیراً دیدی</h3>
+      <button id="clearRecent" style="background:transparent;border:0;cursor:pointer;font-size:.8rem;opacity:.55">پاک کردن</button>
+    </div>
+    <div class="recent-row" id="recentRow"></div>
+  </div>
+</section>
+
+<section id="seasonal" class="seasonal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">کلکسیون‌های ویژه</span>
+      <h2>فصلش رسیده، طعمش اومده</h2>
+      <p>هر فصل یه کلکسیون جدید با طعم‌های محدود و طراحی ویژه.</p>
+    </div>
+    <div class="season-cards">
+      <div class="season reveal">
+        <div class="s-badge">بهار</div>
+        <div class="s-emoji">🌸</div>
+        <h4>کلکسیون بهاره</h4>
+        <p>با گل محمدی، پسته و عسل طبیعی. رایحه‌ی بهار در هر گاز.</p>
+        <div class="s-price">۱۴۵٬۰۰۰ تومان</div>
+        <button class="s-add" data-season="🌸 کلکسیون بهاره" data-emoji="🌸" data-price="145000">افزودن به سبد</button>
+      </div>
+
+      <div class="season reveal">
+        <div class="s-badge" style="background:linear-gradient(135deg,#E8A33D,#B4661F)">پاییز</div>
+        <div class="s-emoji">🌰</div>
+        <h4>کلکسیون پاییزی</h4>
+        <p>دارچین، گردو، خرما و شیره‌ی افرا. گرم و دلچسب برای روزهای سرد.</p>
+        <div class="s-price">۱۳۵٬۰۰۰ تومان</div>
+        <button class="s-add" data-season="🌰 کلکسیون پاییزی" data-emoji="🌰" data-price="135000">افزودن به سبد</button>
+      </div>
+
+      <div class="season reveal">
+        <div class="s-badge" style="background:linear-gradient(135deg,#7A9471,#4F6B47)">گیاهی</div>
+        <div class="s-emoji">🍃</div>
+        <h4>کلکسیون وگان</h4>
+        <p>بدون تخم‌مرغ، بدون لبنیات. با آرد بادام و شیر نارگیل.</p>
+        <div class="s-price">۱۵۵٬۰۰۰ تومان</div>
+        <button class="s-add" data-season="🍃 کلکسیون وگان" data-emoji="🍃" data-price="155000">افزودن به سبد</button>
+      </div>
+
+      <div class="season reveal">
+        <div class="s-badge" style="background:linear-gradient(135deg,#C25A62,#8A3844)">محدود</div>
+        <div class="s-emoji">🍯</div>
+        <h4>کلکسیون عسل کوهی</h4>
+        <p>با عسل طبیعی کوهستان و مغزهای تازه. فقط تعداد محدود در ماه.</p>
+        <div class="s-price">۱۷۵٬۰۰۰ تومان</div>
+        <button class="s-add" data-season="🍯 کلکسیون عسل کوهی" data-emoji="🍯" data-price="175000">افزودن به سبد</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">از آشپزخونه‌ی ما</span>
+      <h2>لحظه‌های شیرین</h2>
+      <p>یه نگاه به پشت صحنه و لحظه‌های پخت کوکی‌ها.</p>
+    </div>
+    <div class="gallery">
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#FFF3DC,#F0D9AE)">🍪<div class="overlay">جو و عسل تازه از فر</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#E4D4C4,#C9AE95)">🍫<div class="overlay">شکلات تلخ در حال ذوب</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#F5F0E6,#DED5C0)">🥥<div class="overlay">نارگیل رنده‌شده‌ی روز</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#EFE0CC,#D6BE9C)">🌰<div class="overlay">گردوهای تازه‌ی کوهی</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#FBF4E8,#EADCC4)">🧈<div class="overlay">کره‌ی حیوانی طبیعی</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#F0DCC4,#D9B98E)">🍩<div class="overlay">کاکائوی خالص</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#EFE0CC,#D6BE9C)">🍯<div class="overlay">عسل کوهی خالص</div></div>
+      <div class="gal-item reveal" style="background:linear-gradient(135deg,#F3E8D3,#E3D0AE)">👩‍🍳<div class="overlay">دست‌های ماهر ما</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="reveal">
+      <span style="color:var(--caramel);font-weight:800;font-size:.8rem;letter-spacing:2px">داستان ما</span>
+      <h2 style="font-size:clamp(1.5rem,3.2vw,2.25rem);font-weight:900;letter-spacing:-1px;margin-top:12px;line-height:1.5">از آشپزخونه‌ی خونه تا سفره‌ی شما</h2>
+      <p style="opacity:.75;margin-top:14px;font-weight:300;font-size:.9rem">همه‌چیز از یه رژیم غذایی سخت شروع شد. دنبال یه میان‌وعده‌ی سالم بودیم که طعمش هم آدم رو راضی کنه. آخرش خودمون دست به کار شدیم و کوکی‌خانه متولد شد.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="n">۱</div><div><h4>مواد اولیه‌ی روز</h4><p>هر چیزی که لازم داریم، صبح همون روز خریده می‌شه.</p></div></div>
+        <div class="why-item"><div class="n">۲</div><div><h4>پخت در دسته‌های کوچیک</h4><p>هر سری حداکثر ۶۰ عدد. کیفیت قربانی سرعت نمی‌شه.</p></div></div>
+        <div class="why-item"><div class="n">۳</div><div><h4>بدون هیچ افزودنی</h4><p>نه نگهدارنده، نه رنگ مصنوعی، نه طعم‌دهنده‌ی شیمیایی.</p></div></div>
+      </div>
+    </div>
+    <div class="why-art reveal">
+      <div style="font-weight:800;margin-bottom:6px">ترکیبات ما در یک نگاه</div>
+      <div class="bar"><span class="lbl">🌾 فیبر</span><div class="track"><div class="fill" data-w="88" style="background:linear-gradient(90deg,#7A9471,#A8C39B)"></div></div></div>
+      <div class="bar"><span class="lbl">🍯 شیرینی طبیعی</span><div class="track"><div class="fill" data-w="76" style="background:linear-gradient(90deg,#C97B3C,#E8A33D)"></div></div></div>
+      <div class="bar"><span class="lbl">🥜 پروتئین</span><div class="track"><div class="fill" data-w="64" style="background:linear-gradient(90deg,#B4661F,#D98B3F)"></div></div></div>
+      <div class="bar"><span class="lbl">🚫 شکر افزوده</span><div class="track"><div class="fill" data-w="4" style="background:linear-gradient(90deg,#E8A0A8,#F2BCC1)"></div></div></div>
+      <div class="bar"><span class="lbl">🚫 روغن ترانس</span><div class="track"><div class="fill" data-w="0" style="background:#ddd"></div></div></div>
+      <div style="font-size:.75rem;opacity:.55;margin-top:6px">* اعداد تقریبی و بر اساس دستور پخت استاندارد ماست.</div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews-real">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">نظر شما، چراغ راه ما</span>
+      <h2>نظرات و امتیازهای واقعی</h2>
+      <p>اینجا فقط نظرهای واقعی مشتری‌ها نمایش داده می‌شه. اولین نفر باش!</p>
+    </div>
+    <div class="reviews-wrap reveal">
+      <div class="reviews-list" id="reviewsList"></div>
+
+      <div class="review-form">
+        <h4>✍️ نظرت رو بنویس</h4>
+        <p class="rf-sub">نظر و امتیاز تو به دیگران کمک می‌کنه انتخاب بهتری داشته باشن. بعد از ثبت، بلافاصله نمایش داده می‌شه.</p>
+        <form id="reviewForm">
+          <div class="field">
+            <label for="revName">اسمت</label>
+            <input type="text" id="revName" placeholder="اسمت رو وارد کن" required maxlength="40">
+          </div>
+          <div class="field">
+            <label for="revProduct">کدوم کوکی؟</label>
+            <select id="revProduct" required></select>
+          </div>
+          <div class="field">
+            <label>امتیازت</label>
+            <div class="star-picker" id="starPicker">
+              <input type="radio" name="stars" id="s5" value="5"><label for="s5">★</label>
+              <input type="radio" name="stars" id="s4" value="4"><label for="s4">★</label>
+              <input type="radio" name="stars" id="s3" value="3"><label for="s3">★</label>
+              <input type="radio" name="stars" id="s2" value="2"><label for="s2">★</label>
+              <input type="radio" name="stars" id="s1" value="1"><label for="s1">★</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="revText">نظرت</label>
+            <textarea id="revText" placeholder="چی دوست داشتی، چی دوست نداشتی؟" required maxlength="400"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">ثبت نظر 🌟</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">سوالات متداول</span>
+      <h2>هر چی می‌خوای بدونی</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal">
+        <summary>کوکی‌ها چقدر تازه می‌مونن؟</summary>
+        <div class="ans">بدون مواد نگهدارنده، بهترین زمان مصرف تا ۱۰ روز بعد از پخت با نگهداری در ظرف در‌بسته و محیط خشک و خنک است. برای ماندگاری بیشتر در فریزر تا یک ماه قابل نگهداری هستن.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>برای دیابتی‌ها مناسبه؟</summary>
+        <div class="ans">کوکی‌های رژیمی ما با شیرین‌کننده‌های طبیعی مثل عسل و خرما شیرین شدن و شکر تصفیه‌شده ندارن. با این حال هر فرد شرایط خاص خودش رو داره؛ توصیه می‌کنیم قبل از مصرف با پزشک مشورت کنید.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>به کجاها ارسال می‌کنید؟</summary>
+        <div class="ans">فعلاً فقط به <b>تهران</b> و <b>کرج</b> ارسال داریم. تهران با پیک (هزینه ۳۰٬۰۰۰ تومان) و کرج با پیک بین‌شهری (هزینه ۴۵٬۰۰۰ تومان). ارسال تهران زیر ۲ ساعت انجام می‌شه.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>می‌تونم ترکیب بسته رو خودم انتخاب کنم؟</summary>
+        <div class="ans">بله! کافیه هر کوکی رو با تعداد دلخواه به سبد خرید اضافه کنی یا با کوکی‌ساز، کوکی اختصاصی خودت رو بسازی.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>روش‌های پرداخت چیه؟</summary>
+        <div class="ans">پرداخت به‌صورت کارت‌به‌کارت، واریز به حساب یا پرداخت در محل (فقط تهران). بعد از ثبت سفارش از طریق بله هماهنگ می‌کنیم.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>سفارش رو چطور پیگیری کنم؟</summary>
+        <div class="ans">توی بخش «پیگیری سفارش» پایین همین صفحه، شماره تماس خودت رو وارد کن تا وضعیت و جزئیات سفارشت رو ببینی.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="loyalty" style="padding-top:20px">
+  <div class="wrap">
+    <div class="loyalty reveal">
+      <div class="l-emoji">🏆</div>
+      <div class="l-info">
+        <h3>باشگاه مشتریان کوکی‌خانه</h3>
+        <p>هر سفارش امتیاز داره! با هر ۱۰۰٬۰۰۰ تومان خرید، ۱۰ امتیاز می‌گیری. با رسیدن به ۱۰۰ امتیاز، یه بسته‌ی هدیه‌ی رایگان دریافت می‌کنی.</p>
+        <div class="l-bar"><div class="l-fill" id="loyaltyFill"></div></div>
+      </div>
+      <div class="l-score">
+        <span id="loyaltyScore">۰</span>
+        <small>امتیاز شما</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="track" style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">پیگیری سفارش</span>
+      <h2>سفارشت کجاست؟</h2>
+      <p>شماره تماسی که هنگام سفارش وارد کردی رو بنویس تا جزئیات رو ببینی.</p>
+    </div>
+    <div class="track-box reveal">
+      <h3>🔎 جستجوی سفارش</h3>
+      <p>فقط شماره تماس سفارش‌دهنده رو وارد کن.</p>
+      <div class="track-row">
+        <input type="tel" id="trackPhone" placeholder="مثلاً 09123456789">
+        <button class="btn btn-primary" id="trackBtn">پیگیری</button>
+      </div>
+      <div class="track-results" id="trackResults"></div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <div class="order reveal">
+      <div class="order-grid">
+        <div>
+          <h2>سفارشت رو ثبت کن،<br>بقیه‌اش با ما</h2>
+          <p class="sub">فرم رو پر کن؛ سفارشت مستقیم برامون ثبت می‌شه و از طریق بله تأییدش می‌کنیم.</p>
+          <div class="contact-list">
+            <a href="tel:09907002803">📞 <span class="bale-num">0990 700 2803</span></a>
+            <a href="https://ble.ir/09907002803" target="_blank" rel="noopener">💬 پیام در پیام‌رسان بله</a>
+            <a href="https://instagram.com" target="_blank">📸 اینستاگرام کوکی‌خانه</a>
+          </div>
+          <div class="ship-note">
+            🚚 <b>ارسال فقط به تهران و کرج</b><br>
+            • تهران: ۳۰٬۰۰۰ تومان (پیک زیر ۲ ساعت)<br>
+            • کرج: ۴۵٬۰۰۰ تومان (پیک بین‌شهری)
+          </div>
+        </div>
+
+        <form id="orderForm" class="order-form" novalidate>
+          <div class="field">
+            <label for="name">اسمت چیه؟</label>
+            <input type="text" id="name" placeholder="مثلاً مریم رضایی" required>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="phone">شماره تماس</label>
+              <input type="tel" id="phone" placeholder="0912..." required>
+            </div>
+            <div class="field">
+              <label for="deliveryDate">تاریخ تحویل</label>
+              <input type="date" id="deliveryDate" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="product">کدوم کوکی؟</label>
+            <select id="product" required></select>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="qty">تعداد (بسته)</label>
+              <input type="number" id="qty" value="1" min="1" max="99" required>
+            </div>
+            <div class="field">
+              <label for="zone">منطقه ارسال</label>
+              <select id="zone">
+                <option value="tehran" data-fee="30000">تهران (۳۰٬۰۰۰ ت)</option>
+                <option value="karaj" data-fee="45000">کرج (۴۵٬۰۰۰ ت)</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="check-row">
+            <input type="checkbox" id="giftWrap">
+            <span>🎀 بسته‌بندی هدیه (+۲۵٬۰۰۰ تومان)</span>
+          </label>
+
+          <div class="gift-msg-wrap" id="giftMsgWrap">
+            <div class="field" style="margin-bottom:0">
+              <label for="giftMsg">💌 پیام هدیه (روی کارت می‌نویسیم)</label>
+              <textarea id="giftMsg" placeholder="مثلاً: تولدت مبارک عزیزم، امیدوارم این کوکی‌ها شیرینی روزت رو بیشتر کنن 🌸"></textarea>
+            </div>
+          </div>
+
+          <div class="summary-box" id="summaryBox">
+            <div class="row"><span>جمع اقلام</span><span id="sumSubtotal">۰ تومان</span></div>
+            <div class="row"><span>هزینه ارسال</span><span id="sumShip">۰ تومان</span></div>
+            <div class="row"><span>بسته‌بندی هدیه</span><span id="sumGift">۰ تومان</span></div>
+            <div class="row total"><span>مبلغ نهایی</span><span id="sumTotal">۰ تومان</span></div>
+          </div>
+
+          <div class="field">
+            <label for="note">توضیحات (اختیاری)</label>
+            <textarea id="note" placeholder="آدرس، زمان دقیق تحویل، حساسیت غذایی..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">ثبت سفارش ✅</button>
+          <div class="form-msg" id="formMsg"></div>
+          <div class="note">با ثبت سفارش، مبلغی از شما کم نمی‌شه. اول تأیید، بعد پرداخت.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="newsletter reveal">
+      <h3>💌 عضو خبرنامه بشو</h3>
+      <p>اولین نفری باش که از طعم‌های جدید، کلکسیون‌های فصلی و پیشنهادهای ویژه باخبر می‌شه.</p>
+      <form id="newsForm">
+        <input type="email" id="newsEmail" placeholder="ایمیلت رو وارد کن..." required>
+        <button type="submit" class="btn btn-primary">عضویت</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#" class="logo" style="justify-content:center"><span class="dot">🍪</span> کوکی‌خانه</a>
+    <div class="foot-links">
+      <a href="#products">منو</a>
+      <a href="#seasonal">فصلی</a>
+      <a href="#faq">سوالات</a>
+      <a href="#track">پیگیری</a>
+      <a href="#order">سفارش</a>
+      <a href="tel:09907002803">تماس</a>
+    </div>
+    <div class="social">
+      <a href="https://ble.ir/09907002803" target="_blank" title="بله">💬</a>
+      <a href="#" title="اینستاگرام">📸</a>
+      <a href="tel:09907002803" title="تماس">📞</a>
+      <a href="#" title="تلگرام">✈️</a>
+    </div>
+    <div class="copy">© ۱۴۰۳ کوکی‌خانه — تمام حقوق محفوظ است. ساخته‌شده با 🍪 و کمی عشق.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✅ <span id="toastMsg">انجام شد</span></div>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>🛒 سبد خرید</h3>
+    <button id="closeDrawer" title="بستن">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="row"><span>تعداد اقلام</span><span id="drawerCount">۰</span></div>
+    <div class="row total"><span>جمع کل</span><span id="drawerTotal">۰ تومان</span></div>
+    <button class="btn btn-primary" id="checkoutBtn">رفتن به تسویه 🧾</button>
+  </div>
+</aside>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<button class="chat-fab" id="chatFab" title="چت با ما">💬</button>
+<div class="chat-box" id="chatBox">
+  <div class="chat-head">
+    <b>💬 پشتیبانی کوکی‌خانه <span style="opacity:.6;font-weight:400;font-size:.75rem">— آنلاین</span></b>
+    <button id="chatClose">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">سلام! 👋 چطور می‌تونم کمکت کنم؟</div>
+  </div>
+  <div class="chat-quick" id="chatQuick">
+    <button data-q="ارسال چقدره؟">هزینه ارسال</button>
+    <button data-q="کوکی رژیمی پیشنهاد بده">پیشنهاد رژیمی</button>
+    <button data-q="ساعت کاری">ساعت کاری</button>
+    <button data-q="سفارش چطوریه؟">نحوه سفارش</button>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="پیامت رو بنویس...">
+    <button id="chatSend">➤</button>
+  </div>
+</div>
+
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <div class="admin-head">
+      <h2>🍪 پنل سفارشات کوکی‌خانه</h2>
+      <div class="admin-actions">
+        <button onclick="exportCSV()">📥 خروجی CSV</button>
+        <button onclick="exportJSON()">📦 پشتیبان JSON</button>
+        <button class="danger" onclick="clearAllOrders()">🗑 پاک کردن همه</button>
+        <button class="close" onclick="closeAdmin()">✕</button>
+      </div>
+    </div>
+    <div id="adminContent"></div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   تنظیمات
+   ========================================================== */
+const MY_BALE = '09907002803';
+const WEB3FORMS_KEY = '';
+
+const GIFT_WRAP_FEE = 25000;
+const POINTS_PER_100K = 10;
+
+/* ==========================================================
+   محصولات — بدون امتیاز و فروش الکی
+   امتیاز و تعداد فروش از سفارش‌ها و نظرهای واقعی محاسبه می‌شه
+   ========================================================== */
+const PRODUCTS = [
+  { id:1, name:'کوکی جو و عسل', type:'diet', emoji:'🍪', price:89000,
+    desc:'جو پرک کامل، عسل طبیعی و کمی دارچین. سیرکننده و مناسب صبحانه.',
+    tags:['کم‌کالری','فیبر بالا'], bg:'linear-gradient(135deg,#F3E8D3,#E3D0AE)',
+    nutri:{ 'کالری':'۱۲۰ کیلوکالری','پروتئین':'۳ گرم','کربوهیدرات':'۱۸ گرم','چربی':'۴ گرم' },
+    allergens:'حاوی گلوتن (جو) و لبنیات. ممکن است حاوی آثار بادام باشد.' },
+
+  { id:2, name:'کوکی شکلات تلخ', type:'diet', emoji:'🍫', price:95000,
+    desc:'شکلات تلخ ۷۰٪ بدون شکر افزوده، با مغز بادام خرد‌شده.',
+    tags:['بدون شکر','آنتی‌اکسیدان'], bg:'linear-gradient(135deg,#E4D4C4,#C9AE95)',
+    nutri:{ 'کالری':'۱۴۵ کیلوکالری','پروتئین':'۴ گرم','کربوهیدرات':'۱۵ گرم','چربی':'۸ گرم' },
+    allergens:'حاوی بادام و لبنیات. ممکن است حاوی آثار سایر مغزها باشد.' },
+
+  { id:3, name:'کوکی نارگیل و بادام', type:'diet', emoji:'🥥', price:105000,
+    desc:'رنده‌ی نارگیل تازه و آرد بادام. بدون گلوتن و خوش‌عطر.',
+    tags:['بدون گلوتن','کتوژنیک'], bg:'linear-gradient(135deg,#F5F0E6,#DED5C0)',
+    nutri:{ 'کالری':'۱۶۰ کیلوکالری','پروتئین':'۵ گرم','کربوهیدرات':'۹ گرم','چربی':'۱۲ گرم' },
+    allergens:'حاوی بادام و تخم‌مرغ. ممکن است حاوی آثار نارگیل باشد.' },
+
+  { id:4, name:'کوکی دارچین و گردو', type:'diet', emoji:'🌰', price:98000,
+    desc:'گردوی تازه و دارچین سیلان. عطرش کل خونه رو پر می‌کنه.',
+    tags:['امگا۳','شیرینی طبیعی'], bg:'linear-gradient(135deg,#EFE0CC,#D6BE9C)',
+    nutri:{ 'کالری':'۱۵۵ کیلوکالری','پروتئین':'۴ گرم','کربوهیدرات':'۱۶ گرم','چربی':'۹ گرم' },
+    allergens:'حاوی گردو، گلوتن و لبنیات.' },
+
+  { id:5, name:'کوکی کره‌ای کلاسیک', type:'simple', emoji:'🧈', price:75000,
+    desc:'دستور پخت سنتی با کره‌ی حیوانی تازه. ترد، ساده و بی‌نقص.',
+    tags:['کلاسیک','ترد'], bg:'linear-gradient(135deg,#FFF3DC,#F0D9AE)',
+    nutri:{ 'کالری':'۱۳۵ کیلوکالری','پروتئین':'۲ گرم','کربوهیدرات':'۱۷ گرم','چربی':'۷ گرم' },
+    allergens:'حاوی گلوتن، لبنیات و تخم‌مرغ.' },
+
+  { id:6, name:'کوکی شکلات چیپسی', type:'simple', emoji:'🍪', price:85000,
+    desc:'پر از تیکه‌های شکلات که موقع خوردن آب می‌شن.',
+    tags:['شکلاتی'], bg:'linear-gradient(135deg,#F0DCC4,#D9B98E)',
+    nutri:{ 'کالری':'۱۷۵ کیلوکالری','پروتئین':'۳ گرم','کربوهیدرات':'۲۲ گرم','چربی':'۹ گرم' },
+    allergens:'حاوی گلوتن، لبنیات، تخم‌مرغ و سویا.' },
+
+  { id:7, name:'کوکی وانیلی', type:'simple', emoji:'🤍', price:70000,
+    desc:'وانیل طبیعی ماداگاسکار و بافتی نرم و لطیف. ساده ولی حرفه‌ای.',
+    tags:['نرم','معطر'], bg:'linear-gradient(135deg,#FBF4E8,#EADCC4)',
+    nutri:{ 'کالری':'۱۲۵ کیلوکالری','پروتئین':'۲ گرم','کربوهیدرات':'۱۶ گرم','چربی':'۶ گرم' },
+    allergens:'حاوی گلوتن، لبنیات و تخم‌مرغ.' },
+
+  { id:8, name:'کوکی کاکائو', type:'simple', emoji:'🍩', price:88000,
+    desc:'کاکائوی خالص با روکش شکلات سفید. برای وقتی که هوس داری.',
+    tags:['شکلاتی','دسر'], bg:'linear-gradient(135deg,#E7D3BE,#C7A483)',
+    nutri:{ 'کالری':'۱۶۵ کیلوکالری','پروتئین':'۳ گرم','کربوهیدرات':'۲۰ گرم','چربی':'۸ گرم' },
+    allergens:'حاوی گلوتن، لبنیات، تخم‌مرغ و سویا.' },
+
+  { id:9, name:'کوکی بهاره با گل محمدی', type:'simple', emoji:'🌸', price:92000,
+    desc:'گل محمدی، پسته و عسل طبیعی. رایحه‌ی بهار در هر گاز.',
+    tags:['فصلی','معطر'], bg:'linear-gradient(135deg,#FCE4E8,#F2BCC1)', isNew:true,
+    nutri:{ 'کالری':'۱۴۰ کیلوکالری','پروتئین':'۳ گرم','کربوهیدرات':'۱۷ گرم','چربی':'۷ گرم' },
+    allergens:'حاوی پسته، گلوتن و لبنیات.' },
+
+  { id:10, name:'کوکی وگان نارگیلی', type:'diet', emoji:'🍃', price:99000,
+    desc:'بدون تخم‌مرغ، بدون لبنیات. با آرد بادام و شیر نارگیل.',
+    tags:['وگان','بدون گلوتن'], bg:'linear-gradient(135deg,#E6EFE0,#C8DCC0)', isNew:true,
+    nutri:{ 'کالری':'۱۵۰ کیلوکالری','پروتئین':'۴ گرم','کربوهیدرات':'۱۲ گرم','چربی':'۱۰ گرم' },
+    allergens:'حاوی بادام. ممکن است حاوی آثار نارگیل باشد.' }
+];
+
+/* ==========================================================
+   ابزارها
+   ========================================================== */
+const fmt = n => Number(n).toLocaleString('fa-IR');
+const faDate = iso => {
+  if(!iso) return '—';
+  try { return new Date(iso + 'T00:00:00').toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'}); }
+  catch(e){ return iso; }
+};
+const escapeHtml = s => String(s||'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+const ORDERS_KEY = 'cooki_orders_v4';
+const CART_KEY = 'cooki_cart_v4';
+const WISH_KEY = 'cooki_wish_v4';
+const THEME_KEY = 'cooki_theme_v4';
+const REVIEWS_KEY = 'cooki_reviews_v4';
+const RECENT_KEY = 'cooki_recent_v4';
+
+/* ==========================================================
+   داده‌های واقعی: سفارش‌ها و نظرها
+   ========================================================== */
+function getOrders(){ try { return JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]'); } catch(e){ return []; } }
+function getReviews(){ try { return JSON.parse(localStorage.getItem(REVIEWS_KEY) || '[]'); } catch(e){ return []; } }
+function saveReviews(list){ localStorage.setItem(REVIEWS_KEY, JSON.stringify(list)); }
+
+/* آمار یک محصول از داده‌های واقعی */
+function getProductStats(productName){
+  const orders = getOrders();
+  const reviews = getReviews();
+  const sold = orders.filter(o=>o.product === productName).reduce((s,o)=> s + (o.qty||0), 0);
+  const productReviews = reviews.filter(r=>r.product === productName);
+  const rating = productReviews.length
+    ? productReviews.reduce((s,r)=> s + r.stars, 0) / productReviews.length
+    : 0;
+  return { sold, rating, reviewCount: productReviews.length };
+}
+
+/* آمار کلی سایت از داده‌های واقعی */
+function updateHeroStats(){
+  const orders = getOrders();
+  const reviews = getReviews();
+  const totalOrders = orders.length;
+  const totalReviews = reviews.length;
+  const avgRating = reviews.length
+    ? (reviews.reduce((s,r)=> s + r.stars, 0) / reviews.length).toFixed(1)
+    : null;
+
+  document.getElementById('statOrders').textContent = fmt(totalOrders);
+  document.getElementById('statReviews').textContent = fmt(totalReviews);
+  document.getElementById('statRating').textContent = avgRating ? avgRating + ' ★' : '—';
+}
+
+/* ==========================================================
+   Toast
+   ========================================================== */
+const toastEl = document.getElementById('toast');
+const toastMsgEl = document.getElementById('toastMsg');
+let toastTimer;
+function showToast(msg){
+  toastMsgEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2600);
+}
+
+/* ==========================================================
+   Dark Mode
+   ========================================================== */
+const themeBtn = document.getElementById('themeBtn');
+if(localStorage.getItem(THEME_KEY) === 'dark') document.body.classList.add('dark');
+function updateThemeIcon(){ themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙'; }
+updateThemeIcon();
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('dark');
+  localStorage.setItem(THEME_KEY, document.body.classList.contains('dark') ? 'dark' : 'light');
+  updateThemeIcon();
+  showToast(document.body.classList.contains('dark') ? '🌙 حالت شب فعال شد' : '☀️ حالت روز فعال شد');
+});
+
+/* ==========================================================
+   Scroll progress + Back to top
+   ========================================================== */
+const scrollBar = document.getElementById('scrollBar');
+const backTop = document.getElementById('backTop');
+addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  scrollBar.style.width = pct + '%';
+  backTop.classList.toggle('show', h.scrollTop > 500);
+});
+backTop.addEventListener('click', ()=> scrollTo({top:0, behavior:'smooth'}));
+
+/* ==========================================================
+   Wishlist
+   ========================================================== */
+let wishlist = JSON.parse(localStorage.getItem(WISH_KEY) || '[]');
+const wishCount = document.getElementById('wishCount');
+function updateWishCount(){
+  wishCount.textContent = fmt(wishlist.length);
+  wishCount.dataset.zero = wishlist.length ? '0' : '1';
+}
+updateWishCount();
+
+window.toggleWish = function(id, btn){
+  const i = wishlist.indexOf(id);
+  if(i >= 0){ wishlist.splice(i,1); if(btn) btn.classList.remove('on'); showToast('از علاقه‌مندی‌ها حذف شد'); }
+  else { wishlist.push(id); if(btn) btn.classList.add('on'); showToast('به علاقه‌مندی‌ها اضافه شد ❤️'); }
+  localStorage.setItem(WISH_KEY, JSON.stringify(wishlist));
+  updateWishCount();
+};
+
+document.getElementById('wishBtn').addEventListener('click', ()=>{
+  currentFilter = 'wish';
+  document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active', b.dataset.filter === 'wish'));
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+  render();
+});
+
+/* ==========================================================
+   Cart
+   ========================================================== */
+let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+const cartCount = document.getElementById('cartCount');
+const drawerCount = document.getElementById('drawerCount');
+const drawerTotal = document.getElementById('drawerTotal');
+const drawerBody = document.getElementById('drawerBody');
+
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+function cartQty(){ return cart.reduce((s,i)=>s+i.qty, 0); }
+function cartTotal(){ return cart.reduce((s,i)=>s + i.price*i.qty, 0); }
+
+function updateCartBadges(){
+  const q = cartQty();
+  cartCount.textContent = fmt(q);
+  cartCount.dataset.zero = q ? '0' : '1';
+  drawerCount.textContent = fmt(q);
+  drawerTotal.textContent = fmt(cartTotal()) + ' تومان';
+}
+
+function addToCart(product, qty=1){
+  const found = cart.find(i=>i.id === product.id);
+  if(found) found.qty += qty;
+  else cart.push({ id:product.id, name:product.name, price:product.price, emoji:product.emoji, qty });
+  saveCart(); updateCartBadges(); renderCart();
+}
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id === id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty < 1) cart = cart.filter(i=>i.id !== id);
+  saveCart(); updateCartBadges(); renderCart();
+}
+function removeFromCart(id){
+  cart = cart.filter(i=>i.id !== id);
+  saveCart(); updateCartBadges(); renderCart();
+}
+
+function renderCart(){
+  if(cart.length === 0){
+    drawerBody.innerHTML = `<div class="empty-cart"><div>🛒</div>سبد خریدت خالیه!<br><small>از منو یه کوکی خوشمزه انتخاب کن.</small></div>`;
+    return;
+  }
+  drawerBody.innerHTML = cart.map(i=>`
+    <div class="cart-item">
+      <div class="ci-emoji">${i.emoji}</div>
+      <div class="ci-info">
+        <b>${escapeHtml(i.name)}</b>
+        <span>${fmt(i.price)} تومان</span>
+      </div>
+      <div class="qty-ctrl">
+        <button onclick="changeQty(${typeof i.id === 'string' ? `'${i.id}'` : i.id}, -1)">−</button>
+        <span>${fmt(i.qty)}</span>
+        <button onclick="changeQty(${typeof i.id === 'string' ? `'${i.id}'` : i.id}, 1)">+</button>
+      </div>
+      <button class="ci-remove" onclick="removeFromCart(${typeof i.id === 'string' ? `'${i.id}'` : i.id})" title="حذف">🗑</button>
+    </div>
+  `).join('');
+}
+window.changeQty = changeQty;
+window.removeFromCart = removeFromCart;
+
+const drawer = document.getElementById('drawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+document.getElementById('cartBtn').addEventListener('click', ()=>{
+  drawer.classList.add('open'); drawerOverlay.classList.add('open'); document.body.style.overflow='hidden'; renderCart();
+});
+function closeDrawer(){ drawer.classList.remove('open'); drawerOverlay.classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+drawerOverlay.addEventListener('click', closeDrawer);
+document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+  closeDrawer();
+  document.getElementById('order').scrollIntoView({behavior:'smooth'});
+});
+
+/* ==========================================================
+   Render Products
+   ========================================================== */
+const grid = document.getElementById('grid');
+let currentFilter = 'all';
+let currentSort = 'default';
+let searchQuery = '';
+
+function getFilteredProducts(){
+  let list = [...PRODUCTS];
+  if(currentFilter === 'wish') list = list.filter(p => wishlist.includes(p.id));
+  else if(currentFilter === 'hot'){
+    list = list.filter(p => getProductStats(p.name).sold > 0);
+    list.sort((a,b)=> getProductStats(b.name).sold - getProductStats(a.name).sold);
+    return list;
+  }
+  else if(currentFilter !== 'all') list = list.filter(p => p.type === currentFilter);
+  if(searchQuery.trim()){
+    const q = searchQuery.trim().toLowerCase();
+    list = list.filter(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.tags.some(t=>t.toLowerCase().includes(q)));
+  }
+  switch(currentSort){
+    case 'price-asc': list.sort((a,b)=> a.price - b.price); break;
+    case 'price-desc': list.sort((a,b)=> b.price - a.price); break;
+    case 'rating': list.sort((a,b)=> getProductStats(b.name).rating - getProductStats(a.name).rating); break;
+    case 'popular': list.sort((a,b)=> getProductStats(b.name).sold - getProductStats(a.name).sold); break;
+  }
+  return list;
+}
+
+function renderRatingHtml(stats){
+  if(stats.reviewCount === 0){
+    return `<div class="rating no-rate">☆ بدون امتیاز <small>— هنوز نظری ثبت نشده</small></div>`;
+  }
+  const full = Math.round(stats.rating);
+  const stars = '★'.repeat(full) + '☆'.repeat(5 - full);
+  return `<div class="rating">${stars} ${stats.rating.toFixed(1)} <small>(${fmt(stats.reviewCount)} نظر)</small></div>`;
+}
+
+function renderBadgeHtml(p, stats){
+  if(stats.sold > 0 && stats.sold >= 5){
+    return '<span class="badge hot">🔥 پرفروش</span>';
+  }
+  if(p.isNew){
+    return '<span class="badge new">✨ جدید</span>';
+  }
+  return `<span class="badge ${p.type}">${p.type==='diet'?'🌿 رژیمی':'🍪 ساده'}</span>`;
+}
+
+function render(){
+  const list = getFilteredProducts();
+  if(list.length === 0){
+    let msg = 'چیزی پیدا نشد. یه فیلتر یا جستجوی دیگه امتحان کن.';
+    if(currentFilter === 'wish') msg = 'هنوز چیزی به علاقه‌مندی‌ها اضافه نکردی. روی قلب هر کوکی بزن.';
+    if(currentFilter === 'hot') msg = 'هنوز فروشی ثبت نشده که بخوایم پرفروش‌ها رو نشون بدیم.';
+    grid.innerHTML = `<div class="no-result"><div>🔍</div>${msg}</div>`;
+    return;
+  }
+  grid.innerHTML = '';
+  list.forEach((p,i)=>{
+    const stats = getProductStats(p.name);
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.style.animationDelay = (i*45)+'ms';
+    const isWished = wishlist.includes(p.id);
+
+    el.innerHTML = `
+      <div class="thumb" style="background:${p.bg}" data-open="${p.id}">
+        ${renderBadgeHtml(p, stats)}
+        <button class="wish ${isWished?'on':''}" data-wish="${p.id}" title="علاقه‌مندی">❤</button>
+        <span style="filter:drop-shadow(0 14px 18px rgba(63,38,24,.3));position:relative;z-index:1">${p.emoji}</span>
+      </div>
+      <div class="body">
+        <h3 data-open="${p.id}">${p.name}</h3>
+        ${renderRatingHtml(stats)}
+        <p class="desc">${p.desc}</p>
+        <div class="meta">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="foot">
+          <div class="price">${fmt(p.price)} <small>تومان</small></div>
+          <button class="add" data-add="${p.id}">افزودن</button>
+        </div>
+      </div>`;
+    grid.appendChild(el);
+  });
+}
+render();
+updateHeroStats();
+
+grid.addEventListener('click', e=>{
+  const wishBtn = e.target.closest('[data-wish]');
+  if(wishBtn){
+    e.stopPropagation();
+    toggleWish(Number(wishBtn.dataset.wish), wishBtn);
+    if(currentFilter === 'wish') render();
+    return;
+  }
+  const addBtn = e.target.closest('[data-add]');
+  if(addBtn){
+    const p = PRODUCTS.find(x=>x.id === Number(addBtn.dataset.add));
+    if(p){
+      addToCart(p);
+      addBtn.textContent = 'اضافه شد ✓';
+      addBtn.classList.add('done');
+      showToast(p.name + ' به سبد اضافه شد 🛒');
+      setTimeout(()=>{ addBtn.textContent='افزودن'; addBtn.classList.remove('done'); }, 1400);
+    }
+    return;
+  }
+  const openEl = e.target.closest('[data-open]');
+  if(openEl){
+    openProductModal(Number(openEl.dataset.open));
+  }
+});
+
+document.querySelectorAll('.filter').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+document.getElementById('sortSelect').addEventListener('change', e=>{
+  currentSort = e.target.value; render();
+});
+document.getElementById('searchInput').addEventListener('input', e=>{
+  searchQuery = e.target.value; render();
+});
+document.getElementById('mobileSearch').addEventListener('input', e=>{
+  searchQuery = e.target.value; render();
+});
+
+/* ==========================================================
+   Product Modal
+   ========================================================== */
+const modalOverlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+
+function openProductModal(id){
+  const p = PRODUCTS.find(x=>x.id === id);
+  if(!p) return;
+  saveRecentView(id);
+  const isWished = wishlist.includes(p.id);
+  const stats = getProductStats(p.name);
+  modal.className = 'modal product-modal';
+  modal.innerHTML = `
+    <button class="close-m" onclick="closeModal()">✕</button>
+    <div class="modal-grid">
+      <div class="m-visual" style="background:${p.bg}">
+        <span style="position:relative;z-index:1;filter:drop-shadow(0 20px 25px rgba(0,0,0,.3))">${p.emoji}</span>
+      </div>
+      <div class="m-body">
+        <h3>${p.name}</h3>
+        ${renderRatingHtml(stats)}
+        <p class="m-desc">${p.desc}</p>
+        <div style="font-weight:800;margin-bottom:8px;font-size:.88rem">ارزش غذایی (هر عدد):</div>
+        <div class="nutri">
+          ${Object.entries(p.nutri).map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('')}
+        </div>
+        <div class="allergen">⚠️ <b>آلرژن‌ها:</b> ${p.allergens}</div>
+        <div class="m-foot">
+          <div class="price" style="font-size:1.3rem">${fmt(p.price)} <small>تومان</small></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-ghost" onclick="toggleWish(${p.id}, this); this.textContent = wishlist.includes(${p.id}) ? '❤️' : '🤍';" style="padding:11px 16px">${isWished?'❤️':'🤍'}</button>
+            <button class="btn btn-primary" onclick="addFromModal(${p.id})">افزودن به سبد 🛒</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modalOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.closeModal = closeModal;
+modalOverlay.addEventListener('click', e=>{ if(e.target === modalOverlay) closeModal(); });
+
+window.addFromModal = function(id){
+  const p = PRODUCTS.find(x=>x.id === id);
+  if(p){ addToCart(p); showToast(p.name + ' به سبد اضافه شد 🛒'); closeModal(); }
+};
+
+/* ==========================================================
+   Recently Viewed
+   ========================================================== */
+function saveRecentView(id){
+  let recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+  recent = recent.filter(x=>x !== id);
+  recent.unshift(id);
+  recent = recent.slice(0,8);
+  localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+  renderRecent();
+}
+
+function renderRecent(){
+  const recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+  const section = document.getElementById('recent');
+  const row = document.getElementById('recentRow');
+  if(recent.length === 0){ section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  row.innerHTML = recent.map(id=>{
+    const p = PRODUCTS.find(x=>x.id === id);
+    if(!p) return '';
+    return `
+      <div class="recent-item" onclick="openProductModal(${p.id})">
+        <span class="r-emoji">${p.emoji}</span>
+        <div class="r-name">${p.name}</div>
+        <div class="r-price">${fmt(p.price)} ت</div>
+      </div>`;
+  }).join('');
+}
+window.openProductModal = openProductModal;
+renderRecent();
+
+document.getElementById('clearRecent').addEventListener('click', ()=>{
+  localStorage.removeItem(RECENT_KEY);
+  renderRecent();
+  showToast('بازدیدهای اخیر پاک شد');
+});
+
+/* ==========================================================
+   Seasonal (بسته‌ها) — با شناسه‌ی رشته‌ای
+   ========================================================== */
+document.querySelectorAll('.s-add').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const fakeProduct = {
+      id: 'season-' + btn.dataset.season,
+      name: btn.dataset.season,
+      emoji: btn.dataset.emoji,
+      price: Number(btn.dataset.price)
+    };
+    addToCart(fakeProduct);
+    showToast(btn.dataset.season + ' به سبد اضافه شد 🎁');
+  });
+});
+
+/* ==========================================================
+   Cookie of the Day
+   ========================================================== */
+function renderCOTD(){
+  const today = new Date();
+  const dayIdx = today.getDate() % PRODUCTS.length;
+  const p = PRODUCTS[dayIdx];
+  const stats = getProductStats(p.name);
+  const cotd = document.getElementById('cotd');
+  cotd.innerHTML = `
+    <div class="cotd-emoji">${p.emoji}</div>
+    <div class="cotd-info">
+      <span class="cotd-tag">🍪 کوکی امروز</span>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div style="font-size:1.2rem;font-weight:900;color:var(--honey)">${fmt(p.price)} تومان</div>
+        <button class="btn btn-primary" style="padding:9px 18px;font-size:.82rem" onclick="addToCart(PRODUCTS.find(x=>x.id===${p.id}));showToast('${p.name} اضافه شد 🛒')">افزودن سریع</button>
+      </div>
+    </div>
+    <div class="cotd-timer" id="cotdTimer">
+      <div><b id="cdH">۰</b><small>ساعت</small></div>
+      <div><b id="cdM">۰</b><small>دقیقه</small></div>
+      <div><b id="cdS">۰</b><small>ثانیه</small></div>
+    </div>`;
+  function tick(){
+    const now = new Date();
+    const end = new Date(); end.setHours(23,59,59,999);
+    let diff = Math.max(0, end - now);
+    const h = Math.floor(diff / 3600000); diff -= h*3600000;
+    const m = Math.floor(diff / 60000); diff -= m*60000;
+    const s = Math.floor(diff / 1000);
+    const elH = document.getElementById('cdH');
+    const elM = document.getElementById('cdM');
+    const elS = document.getElementById('cdS');
+    if(elH) elH.textContent = fmt(h);
+    if(elM) elM.textContent = fmt(m);
+    if(elS) elS.textContent = fmt(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+renderCOTD();
+
+/* ==========================================================
+   Quiz
+   ========================================================== */
+const QUIZ_QUESTIONS = [
+  { q:'دنبال چه نوع کوکی‌ای هستی؟',
+    opts:[
+      { label:'رژیمی و کم‌کالری', emoji:'🌿', value:'diet' },
+      { label:'ساده و کلاسیک', emoji:'🍪', value:'simple' },
+      { label:'فرقی نمی‌کنه، فقط خوشمزه باشه', emoji:'🤷‍♀️', value:'any' }
+    ]},
+  { q:'چه طعمی رو بیشتر دوست داری؟',
+    opts:[
+      { label:'شکلاتی', emoji:'🍫', value:'chocolate' },
+      { label:'میوه‌ای و معطر', emoji:'🌸', value:'fruity' },
+      { label:'مغزی و گرم', emoji:'🌰', value:'nutty' },
+      { label:'وانیلی و نرم', emoji:'🤍', value:'vanilla' }
+    ]},
+  { q:'بیشتر کِی می‌خوری؟',
+    opts:[
+      { label:'صبحانه یا میان‌وعده‌ی سبک', emoji:'🌅', value:'light' },
+      { label:'عصرونه با چای', emoji:'☕', value:'evening' },
+      { label:'دسر بعد از شام', emoji:'🌙', value:'dessert' }
+    ]},
+  { q:'حساسیت یا محدودیت غذایی داری؟',
+    opts:[
+      { label:'بدون گلوتن', emoji:'🌾', value:'gluten' },
+      { label:'بدون تخم‌مرغ / وگان', emoji:'🍃', value:'vegan' },
+      { label:'بدون شکر افزوده', emoji:'🚫', value:'nosugar' },
+      { label:'محدودیتی ندارم', emoji:'✅', value:'none' }
+    ]}
+];
+
+let quizState = { step:0, answers:[] };
+
+function openQuiz(){
+  quizState = { step:0, answers:[] };
+  modal.className = 'modal quiz-modal';
+  renderQuizStep();
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderQuizStep(){
+  const step = quizState.step;
+  if(step >= QUIZ_QUESTIONS.length){
+    showQuizResult();
+    return;
+  }
+  const q = QUIZ_QUESTIONS[step];
+  const pct = (step / QUIZ_QUESTIONS.length) * 100;
+  modal.innerHTML = `
+    <div class="qb-head">
+      <h3>🧙 کوئیز کوکی مناسب</h3>
+      <p>با چند سوال کوتاه، بهترین کوکی رو بهت پیشنهاد می‌دیم.</p>
+      <div class="qb-progress"><div style="width:${pct}%"></div></div>
+    </div>
+    <div class="qb-body">
+      <div class="qb-step active">
+        <h4>${q.q}</h4>
+        <div class="qb-options">
+          ${q.opts.map((o,i)=>`<button class="qb-opt" data-idx="${i}"><span class="emo">${o.emoji}</span>${o.label}</button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="qb-foot">
+      <span class="step-count">سوال ${fmt(step+1)} از ${fmt(QUIZ_QUESTIONS.length)}</span>
+      <button class="btn btn-ghost" style="padding:8px 16px;font-size:.82rem" onclick="closeModal()">انصراف</button>
+    </div>`;
+
+  modal.querySelectorAll('.qb-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const opt = q.opts[Number(btn.dataset.idx)];
+      quizState.answers.push(opt.value);
+      quizState.step++;
+      renderQuizStep();
+    });
+  });
+}
+
+function showQuizResult(){
+  const answers = quizState.answers;
+  const scores = PRODUCTS.map(p=>{
+    let score = 0;
+    if(answers[0] === 'diet' && p.type === 'diet') score += 5;
+    if(answers[0] === 'simple' && p.type === 'simple') score += 5;
+    if(answers[0] === 'any') score += 2;
+    if(answers[1] === 'chocolate' && (p.tags.includes('شکلاتی') || p.name.includes('شکلات') || p.name.includes('کاکائو'))) score += 4;
+    if(answers[1] === 'fruity' && (p.tags.includes('معطر') || p.tags.includes('فصلی'))) score += 4;
+    if(answers[1] === 'nutty' && (p.name.includes('گردو') || p.name.includes('بادام') || p.tags.includes('امگا۳'))) score += 4;
+    if(answers[1] === 'vanilla' && (p.name.includes('وانیل') || p.tags.includes('نرم'))) score += 4;
+    if(answers[2] === 'light' && p.tags.includes('کم‌کالری')) score += 3;
+    if(answers[2] === 'evening' && p.tags.includes('کلاسیک')) score += 2;
+    if(answers[2] === 'dessert' && (p.tags.includes('دسر') || p.tags.includes('شکلاتی'))) score += 3;
+    if(answers[3] === 'gluten' && p.tags.includes('بدون گلوتن')) score += 5;
+    if(answers[3] === 'vegan' && p.tags.includes('وگان')) score += 5;
+    if(answers[3] === 'nosugar' && p.tags.includes('بدون شکر')) score += 5;
+    return { product:p, score };
+  });
+  scores.sort((a,b)=> b.score - a.score);
+  const winner = scores[0].product;
+  const stats = getProductStats(winner.name);
+
+  modal.innerHTML = `
+    <div class="qb-result">
+      <div class="res-emoji">${winner.emoji}</div>
+      <h3>پیشنهاد ما: ${winner.name}</h3>
+      <p>${winner.desc}</p>
+      <div class="res-tags">${winner.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="res-price">${fmt(winner.price)} تومان</div>
+      <div class="res-actions">
+        <button class="btn btn-ghost" onclick="openQuiz()">🔄 دوباره</button>
+        <button class="btn btn-primary" onclick="addFromModal(${winner.id})">افزودن به سبد 🛒</button>
+      </div>
+    </div>
+    <div style="text-align:center;padding:0 26px 22px">
+      <button class="btn btn-ghost" style="padding:8px 16px;font-size:.8rem" onclick="closeModal()">بستن</button>
+    </div>`;
+}
+
+document.getElementById('quizCard').addEventListener('click', openQuiz);
+document.getElementById('heroQuizBtn').addEventListener('click', openQuiz);
+
+/* ==========================================================
+   Cookie Builder
+   ========================================================== */
+const BUILDER_STEPS = [
+  { key:'base', label:'خمیر پایه', options:[
+    { name:'جو پرک', emoji:'🌾', price:0 },
+    { name:'آرد بادام (بدون گلوتن)', emoji:'🌰', price:15000 },
+    { name:'آرد کامل گندم', emoji:'🍞', price:0 },
+    { name:'آرد نارگیل', emoji:'🥥', price:20000 }
+  ]},
+  { key:'nuts', label:'مغز و افزودنی', options:[
+    { name:'بدون مغز', emoji:'🚫', price:0 },
+    { name:'گردو', emoji:'🌰', price:12000 },
+    { name:'پسته', emoji:'💚', price:25000 },
+    { name:'بادام', emoji:'🌰', price:15000 },
+    { name:'شکلات تلخ', emoji:'🍫', price:18000 }
+  ]},
+  { key:'sweet', label:'شیرین‌کننده', options:[
+    { name:'عسل طبیعی', emoji:'🍯', price:0 },
+    { name:'خرما', emoji:'🌴', price:0 },
+    { name:'شیره‌ی افرا', emoji:'🍁', price:10000 },
+    { name:'بدون شیرین‌کننده', emoji:'🚫', price:0 }
+  ]},
+  { key:'top', label:'روکش', options:[
+    { name:'بدون روکش', emoji:'🚫', price:0 },
+    { name:'شکلات تلخ', emoji:'🍫', price:15000 },
+    { name:'شکلات سفید', emoji:'🤍', price:15000 },
+    { name:'کاراملی', emoji:'🍮', price:18000 }
+  ]}
+];
+
+let builderState = { step:0, selections:{} };
+
+function openBuilder(){
+  builderState = { step:0, selections:{} };
+  modal.className = 'modal builder-modal';
+  renderBuilderStep();
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function getBuilderPrice(){
+  let base = 65000;
+  Object.values(builderState.selections).forEach(sel=>{
+    if(sel && sel.price) base += sel.price;
+  });
+  return base;
+}
+
+function getBuilderEmoji(){
+  const top = builderState.selections.top;
+  const base = builderState.selections.base;
+  const nuts = builderState.selections.nuts;
+  if(top && top.name.includes('شکلات تلخ')) return '🍫';
+  if(nuts && nuts.name === 'پسته') return '💚';
+  if(nuts && nuts.name === 'شکلات تلخ') return '🍫';
+  if(base && base.name.includes('نارگیل')) return '🥥';
+  return '🍪';
+}
+
+function renderBuilderStep(){
+  const step = builderState.step;
+  if(step >= BUILDER_STEPS.length){
+    showBuilderResult();
+    return;
+  }
+  const s = BUILDER_STEPS[step];
+  const pct = (step / BUILDER_STEPS.length) * 100;
+  const currentSel = builderState.selections[s.key];
+
+  modal.innerHTML = `
+    <div class="qb-head">
+      <h3>🎨 کوکی‌ساز اختصاصی</h3>
+      <p>کوکی رویایی خودت رو بساز. هرچی انتخاب کنی، همون پخته می‌شه.</p>
+      <div class="qb-progress"><div style="width:${pct}%"></div></div>
+    </div>
+    <div class="qb-body">
+      <div class="builder-preview">
+        <div class="bp-emoji">${getBuilderEmoji()}</div>
+        <div class="bp-label">پیش‌نمایش کوکی تو</div>
+      </div>
+      <div class="qb-step active">
+        <h4>${s.label} رو انتخاب کن:</h4>
+        <div class="qb-options">
+          ${s.options.map((o,i)=>`
+            <button class="qb-opt ${currentSel && currentSel.name === o.name ? 'selected' : ''}" data-idx="${i}">
+              <span class="emo">${o.emoji}</span>
+              <div style="flex:1">
+                <div>${o.name}</div>
+                ${o.price ? `<small style="opacity:.6;font-size:.75rem">+${fmt(o.price)} تومان</small>` : '<small style="opacity:.6;font-size:.75rem">رایگان</small>'}
+              </div>
+            </button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="qb-foot">
+      <span class="step-count">مرحله ${fmt(step+1)} از ${fmt(BUILDER_STEPS.length)}</span>
+      <div style="display:flex;gap:8px">
+        ${step > 0 ? '<button class="btn btn-ghost" style="padding:8px 16px;font-size:.82rem" id="builderBack">قبلی</button>' : ''}
+        <button class="btn btn-ghost" style="padding:8px 16px;font-size:.82rem" onclick="closeModal()">انصراف</button>
+      </div>
+    </div>`;
+
+  modal.querySelectorAll('.qb-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      builderState.selections[s.key] = s.options[Number(btn.dataset.idx)];
+      builderState.step++;
+      renderBuilderStep();
+    });
+  });
+  const backBtn = document.getElementById('builderBack');
+  if(backBtn) backBtn.addEventListener('click', ()=>{ builderState.step--; renderBuilderStep(); });
+}
+
+function showBuilderResult(){
+  const sel = builderState.selections;
+  const price = getBuilderPrice();
+  const emoji = getBuilderEmoji();
+  const name = `کوکی سفارشی (${sel.base.name})`;
+
+  modal.innerHTML = `
+    <div class="qb-result">
+      <div class="res-emoji">${emoji}</div>
+      <h3>${name}</h3>
+      <p>کوکی اختصاصی تو با انتخاب‌های خودت آماده‌ی پخت شد!</p>
+      <div class="builder-summary" style="text-align:right;max-width:380px;margin-inline:auto">
+        <div class="row"><span>خمیر:</span><b>${sel.base.emoji} ${sel.base.name}</b></div>
+        <div class="row"><span>مغز:</span><b>${sel.nuts.emoji} ${sel.nuts.name}</b></div>
+        <div class="row"><span>شیرین‌کننده:</span><b>${sel.sweet.emoji} ${sel.sweet.name}</b></div>
+        <div class="row"><span>روکش:</span><b>${sel.top.emoji} ${sel.top.name}</b></div>
+        <div class="row total"><span>مبلغ:</span><span>${fmt(price)} تومان</span></div>
+      </div>
+      <div class="res-actions">
+        <button class="btn btn-ghost" onclick="openBuilder()">🔄 دوباره بساز</button>
+        <button class="btn btn-primary" onclick="addCustomToCart('${name}', '${emoji}', ${price})">افزودن به سبد 🛒</button>
+      </div>
+    </div>
+    <div style="text-align:center;padding:0 26px 22px">
+      <button class="btn btn-ghost" style="padding:8px 16px;font-size:.8rem" onclick="closeModal()">بستن</button>
+    </div>`;
+}
+
+window.addCustomToCart = function(name, emoji, price){
+  const customProduct = { id: 'custom-' + Date.now(), name, emoji, price };
+  addToCart(customProduct);
+  showToast('کوکی سفارشی تو اضافه شد 🎨');
+  closeModal();
+};
+
+document.getElementById('builderCard').addEventListener('click', openBuilder);
+
+/* ==========================================================
+   Real Reviews — بدون نظر ساختگی
+   ========================================================== */
+function renderReviews(){
+  const list = document.getElementById('reviewsList');
+  const all = getReviews();
+
+  if(all.length === 0){
+    list.innerHTML = `
+      <div class="reviews-empty">
+        <div>💬</div>
+        هنوز هیچ نظری ثبت نشده.<br>
+        <small>اولین نفری باش که تجربه‌ات رو با دیگران به اشتراک می‌ذاره!</small>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = all.map(r=>{
+    const initials = (r.name || '؟').trim().charAt(0);
+    const colors = ['#C97B3C','#7A9471','#C25A62','#E8A33D','#8A3844'];
+    const color = colors[(r.name||'').length % colors.length];
+    const dt = r.createdAt ? new Date(r.createdAt).toLocaleDateString('fa-IR') : 'همین الان';
+    return `
+      <div class="review">
+        <div class="r-head">
+          <div class="r-av" style="background:${color}">${escapeHtml(initials)}</div>
+          <div class="r-meta">
+            <b>${escapeHtml(r.name)}</b>
+            <small>${dt}</small>
+          </div>
+        </div>
+        <div class="r-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+        <p>${escapeHtml(r.text)}</p>
+        ${r.product ? `<span class="r-product">🍪 ${escapeHtml(r.product)}</span>` : ''}
+      </div>`;
+  }).join('');
+}
+renderReviews();
+
+const revProductSelect = document.getElementById('revProduct');
+PRODUCTS.forEach(p=>{
+  const o = document.createElement('option');
+  o.value = p.name;
+  o.textContent = p.name;
+  revProductSelect.appendChild(o);
+});
+
+document.getElementById('reviewForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const name = document.getElementById('revName').value.trim();
+  const product = revProductSelect.value;
+  const stars = document.querySelector('input[name="stars"]:checked');
+  const text = document.getElementById('revText').value.trim();
+
+  if(!name || name.length < 2){ showToast('لطفاً اسمت رو وارد کن'); return; }
+  if(!stars){ showToast('لطفاً امتیازت رو انتخاب کن'); return; }
+  if(!text || text.length < 3){ showToast('لطفاً نظرت رو بنویس'); return; }
+
+  const review = {
+    name, product,
+    stars: Number(stars.value),
+    text,
+    createdAt: new Date().toISOString()
+  };
+
+  const stored = getReviews();
+  stored.unshift(review);
+  saveReviews(stored);
+  renderReviews();
+  render();
+  updateHeroStats();
+  e.target.reset();
+  showToast('نظرت ثبت شد، ممنون! 🌟');
+  document.getElementById('reviews-real').scrollIntoView({behavior:'smooth'});
+});
+
+/* ==========================================================
+   Order Form
+   ========================================================== */
+const select = document.getElementById('product');
+PRODUCTS.forEach(p=>{
+  const o = document.createElement('option');
+  o.value = p.name;
+  o.textContent = `${p.name} — ${fmt(p.price)} تومان`;
+  o.dataset.price = p.price;
+  select.appendChild(o);
+});
+
+const dateInput = document.getElementById('deliveryDate');
+const today = new Date();
+const iso = d => d.toISOString().slice(0,10);
+dateInput.value = iso(today);
+dateInput.min = iso(today);
+
+const qtyInput = document.getElementById('qty');
+const zoneSelect = document.getElementById('zone');
+const giftWrap = document.getElementById('giftWrap');
+const giftMsg = document.getElementById('giftMsg');
+const giftMsgWrap = document.getElementById('giftMsgWrap');
+
+giftWrap.addEventListener('change', ()=>{
+  giftMsgWrap.classList.toggle('open', giftWrap.checked);
+});
+
+function getSelectedProduct(){
+  const opt = select.selectedOptions[0];
+  if(!opt) return null;
+  return { name: opt.value, price: Number(opt.dataset.price) || 0 };
+}
+function getZoneFee(){ return Number(zoneSelect.selectedOptions[0].dataset.fee || 0); }
+
+function calcTotals(){
+  const p = getSelectedProduct();
+  const qty = Math.max(1, parseInt(qtyInput.value,10) || 1);
+  const subtotal = (p ? p.price : 0) * qty;
+  const ship = getZoneFee();
+  const gift = giftWrap.checked ? GIFT_WRAP_FEE : 0;
+  const total = subtotal + ship + gift;
+  return { subtotal, ship, gift, total, qty, product:p };
+}
+
+function updateSummary(){
+  const t = calcTotals();
+  document.getElementById('sumSubtotal').textContent = fmt(t.subtotal) + ' تومان';
+  document.getElementById('sumShip').textContent = fmt(t.ship) + ' تومان';
+  document.getElementById('sumGift').textContent = fmt(t.gift) + ' تومان';
+  document.getElementById('sumTotal').textContent = fmt(t.total) + ' تومان';
+}
+[select, qtyInput, zoneSelect, giftWrap].forEach(el=>{
+  el.addEventListener('change', updateSummary);
+  el.addEventListener('input', updateSummary);
+});
+updateSummary();
+
+const formMsg = document.getElementById('formMsg');
+function setMsg(text, type){ formMsg.textContent = text; formMsg.className = 'form-msg ' + (type||''); }
+
+document.getElementById('orderForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  setMsg('', '');
+
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const deliveryDate = dateInput.value;
+  const note = document.getElementById('note').value.trim();
+  const giftMessage = giftMsg.value.trim();
+  const t = calcTotals();
+
+  if(!name || name.length < 2){ setMsg('لطفاً اسمت رو درست وارد کن.', 'err'); return; }
+  if(!/^0?9\d{9}$/.test(phone.replace(/[\s-]/g,''))){ setMsg('شماره تماس معتبر نیست (مثال: ۰۹۱۲۳۴۵۶۷۸۹).', 'err'); return; }
+  if(!deliveryDate){ setMsg('تاریخ تحویل رو انتخاب کن.', 'err'); return; }
+
+  const order = {
+    id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+    name, phone, qty:t.qty, product:select.value, deliveryDate, note,
+    unitPrice: t.product ? t.product.price : 0,
+    subtotal: t.subtotal, shipping: t.ship, gift: t.gift,
+    totalPrice: t.total,
+    zone: zoneSelect.value,
+    giftWrap: giftWrap.checked,
+    giftMessage: giftWrap.checked ? giftMessage : '',
+    createdAt: new Date().toISOString()
+  };
+
+  const all = getOrders();
+  all.push(order);
+  localStorage.setItem(ORDERS_KEY, JSON.stringify(all));
+
+  if(WEB3FORMS_KEY && WEB3FORMS_KEY.trim().length > 5){
+    try{
+      await fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json','Accept':'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY.trim(),
+          subject: `🍪 سفارش جدید: ${select.value} × ${t.qty}`,
+          from_name:'کوکی‌خانه',
+          نام:name, شماره_تماس:phone, محصول:select.value, تعداد:t.qty,
+          تاریخ_تحویل: faDate(deliveryDate),
+          منطقه: zoneSelect.selectedOptions[0].textContent,
+          بسته_بندی_هدیه: giftWrap.checked ? 'بله' : 'خیر',
+          پیام_هدیه: giftMessage || '—',
+          مبلغ_نهایی: fmt(t.total) + ' تومان',
+          توضیحات: note || '—'
+        })
+      });
+    }catch(err){ console.warn(err); }
+  }
+
+  const orderText =
+`سلام کوکی‌خانه 🍪
+سفارش جدید:
+👤 نام: ${name}
+📞 تماس: ${phone}
+🍪 محصول: ${select.value}
+🔢 تعداد: ${t.qty} بسته
+📅 تاریخ تحویل: ${faDate(deliveryDate)}
+📍 منطقه: ${zoneSelect.selectedOptions[0].textContent}
+🎀 بسته‌بندی هدیه: ${giftWrap.checked ? 'بله' : 'خیر'}${giftWrap.checked && giftMessage ? `\n💌 پیام هدیه: ${giftMessage}` : ''}
+🚚 هزینه ارسال: ${fmt(t.ship)} تومان
+💵 مبلغ نهایی: ${fmt(t.total)} تومان
+📝 توضیحات: ${note || '—'}`;
+
+  try{ await navigator.clipboard.writeText(orderText); }catch(e){}
+  window.open(`https://ble.ir/${MY_BALE}`, '_blank', 'noopener');
+
+  setMsg(`✅ سفارش ثبت شد! مبلغ نهایی: ${fmt(t.total)} تومان. متن سفارش کپی شد؛ توی بله برای ما بفرست.`, 'ok');
+  showToast('سفارش ثبت شد ✅ متن کپی شد');
+  launchConfetti();
+
+  e.target.reset();
+  dateInput.value = iso(today);
+  giftMsgWrap.classList.remove('open');
+  updateSummary();
+  cart = []; saveCart(); updateCartBadges(); renderCart();
+  updateHeroStats();
+  render();
+});
+
+/* ==========================================================
+   Order Tracking
+   ========================================================== */
+document.getElementById('trackBtn').addEventListener('click', ()=>{
+  const phone = document.getElementById('trackPhone').value.trim().replace(/[\s-]/g,'');
+  const results = document.getElementById('trackResults');
+  if(!phone){ results.innerHTML = '<div class="track-empty">شماره تماس رو وارد کن.</div>'; return; }
+  const all = getOrders();
+  const mine = all.filter(o => o.phone.replace(/[\s-]/g,'').includes(phone));
+  if(mine.length === 0){
+    results.innerHTML = '<div class="track-empty">سفارشی با این شماره پیدا نشد 🤷‍♀️</div>';
+    return;
+  }
+  results.innerHTML = mine.map(o=>`
+    <div class="track-item">
+      <div class="head">
+        <b>🍪 ${escapeHtml(o.product)} × ${fmt(o.qty)}</b>
+        <span>ثبت شده</span>
+      </div>
+      <div class="info">
+        <span>📅 تاریخ تحویل: <b>${faDate(o.deliveryDate)}</b></span>
+        <span>💰 مبلغ نهایی: <b>${fmt(o.totalPrice)} تومان</b></span>
+        <span>🕐 زمان ثبت: ${new Date(o.createdAt).toLocaleDateString('fa-IR')}</span>
+      </div>
+    </div>
+  `).join('');
+});
+
+/* ==========================================================
+   Newsletter
+   ========================================================== */
+document.getElementById('newsForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const email = document.getElementById('newsEmail').value.trim();
+  if(!email || !email.includes('@')){ showToast('ایمیل معتبر وارد کن'); return; }
+  const list = JSON.parse(localStorage.getItem('cooki_news') || '[]');
+  list.push({ email, date: new Date().toISOString() });
+  localStorage.setItem('cooki_news', JSON.stringify(list));
+  showToast('🎉 عضو خبرنامه شدی!');
+  e.target.reset();
+});
+
+/* ==========================================================
+   Confetti
+   ========================================================== */
+const confettiCanvas = document.getElementById('confetti');
+function launchConfetti(){
+  const ctx = confettiCanvas.getContext('2d');
+  confettiCanvas.style.display = 'block';
+  confettiCanvas.width = innerWidth; confettiCanvas.height = innerHeight;
+  const colors = ['#C97B3C','#E8A33D','#7A9471','#E8A0A8','#F0B85C','#A8C39B'];
+  const pieces = Array.from({length:140}, ()=>({
+    x: Math.random()*innerWidth,
+    y: -20 - Math.random()*innerHeight*0.4,
+    size: 6 + Math.random()*8,
+    color: colors[Math.floor(Math.random()*colors.length)],
+    vx: -1.5 + Math.random()*3,
+    vy: 2 + Math.random()*4,
+    rot: Math.random()*Math.PI*2,
+    vr: -0.15 + Math.random()*0.3
+  }));
+  let frame = 0;
+  function draw(){
+    ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+    pieces.forEach(p=>{
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.06;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+      ctx.restore();
+    });
+    frame++;
+    if(frame < 260) requestAnimationFrame(draw);
+    else { ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); confettiCanvas.style.display='none'; }
+  }
+  draw();
+}
+
+/* ==========================================================
+   Chat Widget
+   ========================================================== */
+const chatBox = document.getElementById('chatBox');
+const chatFab = document.getElementById('chatFab');
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+
+chatFab.addEventListener('click', ()=> chatBox.classList.toggle('open'));
+document.getElementById('chatClose').addEventListener('click', ()=> chatBox.classList.remove('open'));
+
+const CHAT_RESPONSES = {
+  'ارسال چقدره؟': 'هزینه ارسال:\n• تهران: ۳۰٬۰۰۰ تومان (پیک زیر ۲ ساعت)\n• کرج: ۴۵٬۰۰۰ تومان (پیک بین‌شهری)\n\nفعلاً فقط به تهران و کرج ارسال داریم.',
+  'کوکی رژیمی پیشنهاد بده': 'پیشنهاد ما:\n🌿 کوکی جو و عسل\n🍫 کوکی شکلات تلخ\n🥥 کوکی نارگیل و بادام\n🍃 کوکی وگان نارگیلی\n\nهمه بدون شکر افزوده و مواد نگهدارنده.',
+  'ساعت کاری': 'ما هر روز از ساعت ۸ صبح تا ۱۰ شب پاسخگو هستیم.\nپخت کوکی‌ها هر روز صبح ساعت ۷ شروع می‌شه. 🍪',
+  'سفارش چطوریه؟': 'کافیه محصول رو به سبد اضافه کنی، فرم سفارش رو پر کنی و ثبت کنی. متن سفارش خودکار کپی می‌شه و از طریق بله تأیید می‌کنیم.'
+};
+
+function addChatMsg(text, isUser){
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
+  div.innerHTML = escapeHtml(text).replace(/\n/g, '<br>');
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function botReply(text){
+  const key = Object.keys(CHAT_RESPONSES).find(k=> text.includes(k.replace('؟','')) || k.includes(text));
+  const reply = key ? CHAT_RESPONSES[key] : 'ممنون از پیامت! 🌸 به‌زودی یکی از همکارامون جوابت رو می‌ده. برای پاسخ سریع‌تر می‌تونی به بله پیام بدی: 09907002803';
+  setTimeout(()=> addChatMsg(reply, false), 700);
+}
+
+document.querySelectorAll('#chatQuick button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const q = btn.dataset.q;
+    addChatMsg(q, true);
+    botReply(q);
+  });
+});
+
+document.getElementById('chatSend').addEventListener('click', sendChat);
+chatInput.addEventListener('keypress', e=>{ if(e.key === 'Enter') sendChat(); });
+function sendChat(){
+  const text = chatInput.value.trim();
+  if(!text) return;
+  addChatMsg(text, true);
+  botReply(text);
+  chatInput.value = '';
+}
+
+/* ==========================================================
+   Voice Search
+   ========================================================== */
+const micBtn = document.getElementById('micBtn');
+if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SR();
+  recognition.lang = 'fa-IR';
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  let listening = false;
+  micBtn.addEventListener('click', ()=>{
+    if(listening){ recognition.stop(); return; }
+    try{ recognition.start(); listening = true; micBtn.classList.add('rec'); }
+    catch(e){ showToast('مرورگر از جستجوی صوتی پشتیبانی نمی‌کنه'); }
+  });
+  recognition.onresult = e=>{
+    const text = e.results[0][0].transcript;
+    document.getElementById('searchInput').value = text;
+    searchQuery = text;
+    render();
+    showToast('جستجو: ' + text);
+  };
+  recognition.onend = ()=>{ listening = false; micBtn.classList.remove('rec'); };
+  recognition.onerror = ()=>{ listening = false; micBtn.classList.remove('rec'); };
+} else {
+  micBtn.addEventListener('click', ()=> showToast('مرورگرت از جستجوی صوتی پشتیبانی نمی‌کنه 😕'));
+}
+
+/* ==========================================================
+   Header / Menu / Animations
+   ========================================================== */
+const header = document.getElementById('header');
+addEventListener('scroll',()=>{ header.classList.toggle('scrolled', scrollY > 20); });
+
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+burger.addEventListener('click',()=>{
+  menu.classList.toggle('open');
+  burger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  menu.classList.remove('open'); burger.textContent = '☰';
+}));
+
+const io = new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const barObs = new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(!en.isIntersecting) return;
+    const fill = en.target;
+    setTimeout(()=>{ fill.style.width = fill.dataset.w + '%'; }, 200);
+    barObs.unobserve(fill);
+  });
+},{threshold:.5});
+document.querySelectorAll('.fill').forEach(el=>barObs.observe(el));
+
+const ticker = document.getElementById('ticker');
+ticker.innerHTML += ticker.innerHTML;
+
+document.querySelectorAll('.faq').forEach(f=>{
+  f.addEventListener('toggle', ()=>{ f.classList.toggle('open', f.open); });
+});
+
+/* ==========================================================
+   Admin Panel
+   ========================================================== */
+const adminOverlay = document.getElementById('adminOverlay');
+const adminContent = document.getElementById('adminContent');
+
+function openAdmin(){ adminOverlay.classList.add('open'); document.body.style.overflow='hidden'; renderAdmin(); }
+function closeAdmin(){ adminOverlay.classList.remove('open'); document.body.style.overflow=''; }
+window.openAdmin = openAdmin; window.closeAdmin = closeAdmin;
+
+if(location.hash === '#admin') openAdmin();
+addEventListener('hashchange', ()=>{ if(location.hash === '#admin') openAdmin(); });
+
+let logoClicks = 0, logoTimer;
+document.getElementById('logoBtn').addEventListener('click', e=>{
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(()=>{ logoClicks = 0; }, 1500);
+  if(logoClicks >= 5){ e.preventDefault(); logoClicks = 0; openAdmin(); }
+});
+
+addEventListener('keydown', e=>{
+  if((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')){
+    e.preventDefault();
+    adminOverlay.classList.contains('open') ? closeAdmin() : openAdmin();
+  }
+  if(e.key === 'Escape'){
+    if(adminOverlay.classList.contains('open')) closeAdmin();
+    if(modalOverlay.classList.contains('open')) closeModal();
+    if(drawer.classList.contains('open')) closeDrawer();
+    if(chatBox.classList.contains('open')) chatBox.classList.remove('open');
+  }
+});
+
+adminOverlay.addEventListener('click', e=>{ if(e.target === adminOverlay) closeAdmin(); });
+
+function renderAdmin(){
+  const orders = getOrders();
+  const reviews = getReviews();
+
+  if(orders.length === 0 && reviews.length === 0){
+    adminContent.innerHTML = `<div class="empty"><div style="font-size:3rem;margin-bottom:10px">📭</div>هنوز هیچ سفارش یا نظری ثبت نشده.<br><small>وقتی مشتری‌ها سفارش بدن یا نظر بذارن، اینجا نمایش داده می‌شه.</small></div>`;
+    return;
+  }
+
+  const totalOrders = orders.length;
+  const totalBoxes = orders.reduce((s,o)=>s + (o.qty||0), 0);
+  const totalRevenue = orders.reduce((s,o)=>s + (o.totalPrice||0), 0);
+  const uniqueCustomers = new Set(orders.map(o=>o.phone)).size;
+  const giftOrders = orders.filter(o=>o.giftWrap).length;
+  const avgRating = reviews.length
+    ? (reviews.reduce((s,r)=> s + r.stars, 0) / reviews.length).toFixed(1)
+    : '—';
+
+  const byProduct = {};
+  orders.forEach(o=>{
+    byProduct[o.product] = byProduct[o.product] || { qty:0, count:0, revenue:0 };
+    byProduct[o.product].qty += o.qty;
+    byProduct[o.product].count += 1;
+    byProduct[o.product].revenue += o.totalPrice || 0;
+  });
+  const productRows = Object.entries(byProduct).sort((a,b)=> b[1].qty - a[1].qty);
+  const maxQty = Math.max(...productRows.map(([,v])=>v.qty), 1);
+
+  const byDate = {};
+  orders.forEach(o=>{
+    const d = o.deliveryDate || 'نامشخص';
+    byDate[d] = byDate[d] || { qty:0, count:0 };
+    byDate[d].qty += o.qty;
+    byDate[d].count += 1;
+  });
+  const dateRows = Object.entries(byDate).sort((a,b)=> a[0].localeCompare(b[0]));
+
+  const sortedOrders = [...orders].sort((a,b)=> (b.createdAt||'').localeCompare(a.createdAt||''));
+
+  adminContent.innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-box"><div class="k">تعداد سفارش‌ها</div><div class="v">${fmt(totalOrders)} <small>سفارش</small></div></div>
+      <div class="stat-box"><div class="k">کل کوکی‌ها</div><div class="v">${fmt(totalBoxes)} <small>بسته</small></div></div>
+      <div class="stat-box"><div class="k">مشتری یکتا</div><div class="v">${fmt(uniqueCustomers)} <small>نفر</small></div></div>
+      <div class="stat-box"><div class="k">سفارش هدیه</div><div class="v">${fmt(giftOrders)} <small>سفارش</small></div></div>
+      <div class="stat-box"><div class="k">نظرها</div><div class="v">${fmt(reviews.length)} <small>نظر</small></div></div>
+      <div class="stat-box"><div class="k">میانگین امتیاز</div><div class="v">${avgRating} <small>از ۵</small></div></div>
+      <div class="stat-box"><div class="k">مجموع مبلغ</div><div class="v">${fmt(totalRevenue)} <small>تومان</small></div></div>
+    </div>
+
+    ${productRows.length > 0 ? `
+    <div class="admin-section">
+      <h3>📦 تفکیک بر اساس محصول</h3>
+      <div class="breakdown">
+        ${productRows.map(([name, v])=>{
+          const pct = Math.round((v.qty / maxQty) * 100);
+          const emoji = (PRODUCTS.find(p=>p.name===name)||{}).emoji || '🍪';
+          return `<div class="bd-row"><div class="name">${emoji} ${name}</div><div class="track"><div class="fill" style="width:${pct}%">${v.qty>0?fmt(v.qty):''}</div></div><div class="num">${fmt(v.qty)} بسته</div></div>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+
+    ${dateRows.length > 0 ? `
+    <div class="admin-section">
+      <h3>📅 تفکیک بر اساس تاریخ تحویل</h3>
+      <div class="breakdown">
+        ${dateRows.map(([date, v])=>`
+          <div class="bd-row">
+            <div class="name"><span class="tag-date">${faDate(date)}</span></div>
+            <div class="track"><div class="fill" style="width:${Math.round((v.qty/totalBoxes)*100)}%">${fmt(v.qty)}</div></div>
+            <div class="num">${fmt(v.count)} سفارش</div>
+          </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${sortedOrders.length > 0 ? `
+    <div class="admin-section">
+      <h3>🧾 لیست سفارش‌ها (${fmt(sortedOrders.length)})</h3>
+      <div style="overflow-x:auto">
+        <table class="orders-table">
+          <thead><tr>
+            <th>#</th><th>نام</th><th>تماس</th><th>محصول</th><th>تعداد</th><th>تاریخ</th><th>مبلغ</th><th>هدیه</th><th>توضیحات</th><th></th>
+          </tr></thead>
+          <tbody>
+            ${sortedOrders.map((o,i)=>`
+              <tr>
+                <td>${fmt(i+1)}</td>
+                <td><b>${escapeHtml(o.name)}</b></td>
+                <td style="direction:ltr;text-align:right">${escapeHtml(o.phone)}</td>
+                <td>${escapeHtml(o.product)}</td>
+                <td><span class="tag-qty">${fmt(o.qty)}</span></td>
+                <td><span class="tag-date">${faDate(o.deliveryDate)}</span></td>
+                <td>${o.totalPrice?fmt(o.totalPrice)+' ت':'—'}</td>
+                <td>${o.giftWrap?'🎀':'—'}</td>
+                <td style="max-width:140px;opacity:.75;font-size:.74rem">${escapeHtml(o.note||'—')}</td>
+                <td><button class="del-btn" onclick="deleteOrder('${o.id}')">حذف</button></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : ''}
+
+    ${reviews.length > 0 ? `
+    <div class="admin-section">
+      <h3>💬 نظرات مشتری‌ها (${fmt(reviews.length)})</h3>
+      <div style="overflow-x:auto">
+        <table class="orders-table">
+          <thead><tr>
+            <th>#</th><th>نام</th><th>محصول</th><th>امتیاز</th><th>نظر</th><th>تاریخ</th><th></th>
+          </tr></thead>
+          <tbody>
+            ${reviews.map((r,i)=>`
+              <tr>
+                <td>${fmt(i+1)}</td>
+                <td><b>${escapeHtml(r.name)}</b></td>
+                <td>${escapeHtml(r.product||'—')}</td>
+                <td>${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</td>
+                <td style="max-width:280px;opacity:.85;font-size:.76rem">${escapeHtml(r.text)}</td>
+                <td style="white-space:nowrap">${r.createdAt?new Date(r.createdAt).toLocaleDateString('fa-IR'):'—'}</td>
+                <td><button class="del-btn" onclick="deleteReview('${r.createdAt}')">حذف</button></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : ''}
+
+    <div style="font-size:.76rem;opacity:.55;text-align:center;line-height:1.9">
+      💡 داده‌ها در همین مرورگر ذخیره می‌شن. برای دریافت از همه‌ی دستگاه‌ها، WEB3FORMS_KEY رو تنظیم کن.
+    </div>
+  `;
+}
+
+window.deleteOrder = function(id){
+  const list = getOrders().filter(o=>o.id !== id);
+  localStorage.setItem(ORDERS_KEY, JSON.stringify(list));
+  renderAdmin(); updateHeroStats(); render(); showToast('سفارش حذف شد');
+};
+window.deleteReview = function(createdAt){
+  const list = getReviews().filter(r=>r.createdAt !== createdAt);
+  saveReviews(list);
+  renderAdmin(); renderReviews(); render(); updateHeroStats(); showToast('نظر حذف شد');
+};
+window.clearAllOrders = function(){
+  if(!confirm('مطمئنی همه‌ی سفارش‌ها و نظرها پاک بشن؟')) return;
+  localStorage.setItem(ORDERS_KEY, '[]');
+  saveReviews([]);
+  renderAdmin(); renderReviews(); render(); updateHeroStats(); showToast('همه پاک شد');
+};
+window.exportCSV = function(){
+  const orders = getOrders();
+  if(!orders.length){ showToast('سفارشی برای خروجی نیست'); return; }
+  const headers = ['نام','تماس','محصول','تعداد','تاریخ تحویل','منطقه','بسته هدیه','پیام هدیه','ارسال','مبلغ کل','توضیحات','زمان ثبت'];
+  const rows = orders.map(o=>[o.name,o.phone,o.product,o.qty,o.deliveryDate,o.zone||'',o.giftWrap?'بله':'خیر',o.giftMessage||'',o.shipping||0,o.totalPrice,o.note||'',o.createdAt]);
+  const csv = '\uFEFF' + [headers,...rows].map(r=> r.map(c=> `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url;
+  a.download = `cooki-orders-${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  showToast('CSV دانلود شد 📥');
+};
+window.exportJSON = function(){
+  const data = { orders: getOrders(), reviews: getReviews() };
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url;
+  a.download = `cooki-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  showToast('پشتیبان JSON دانلود شد 📦');
+};
+
+/* Init */
+updateCartBadges();
+renderCart();
+</script>
+</body>
+</html>
